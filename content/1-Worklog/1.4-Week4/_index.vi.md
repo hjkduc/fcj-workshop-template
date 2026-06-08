@@ -1,59 +1,30 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
+date: 2026-05-11
 weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Trọng tâm vào Tối ưu hệ thống trên AWS và các nghiệp vụ Vận hành (Operations).
+* Làm chủ tự động hóa serverless và các kỹ thuật giám sát hệ thống nâng cao.
+* Quản lý và triển khai tài nguyên theo phương pháp Hạ tầng dưới dạng mã (IaC).
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| 2 | - Tự động hóa bằng Serverless với AWS Lambda <br> - Giám sát nâng cao với CloudWatch và Grafana | 11/05/2026 | 11/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Tham gia Workshop CloudWatch Nâng cao <br> - Tổ chức tài nguyên với Tags và Resource Groups | 12/05/2026 | 12/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Kiểm soát quyền truy cập kết hợp IAM và Resource Tags <br> - Quản lý hệ thống với AWS Systems Manager | 13/05/2026 | 13/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Truy cập máy chủ từ xa an toàn với Systems Manager Session Manager <br> - Hạ tầng dưới dạng mã (IaC) với AWS CloudFormation | 14/05/2026 | 14/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Tìm hiểu Bộ công cụ phát triển đám mây (AWS CDK) cơ bản <br> - Tổng kết thực hành tối ưu hệ thống | 15/05/2026 | 15/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Tự động hóa Serverless:** Hiểu được kiến trúc không máy chủ và biết cách dùng AWS Lambda để tự động hóa các tác vụ vận hành.
+* **Giám sát chuyên sâu:** Nâng cấp khả năng theo dõi hệ thống thông qua việc kết hợp CloudWatch với Grafana, hoàn thành Workshop thực tế.
+* **Quản trị Tài nguyên & Bảo mật:** Biết cách tổ chức tài nguyên bằng Tags/Resource Groups và thiết lập bảo mật chặt chẽ bằng cách gắn chính sách IAM với Resource Tags.
+* **Vận hành an toàn:** Sử dụng thành thạo AWS Systems Manager, đặc biệt là Session Manager để remote an toàn vào EC2 mà không cần mở port SSH.
+* **Hạ tầng dưới dạng mã (IaC):** Chuyển đổi sang tự động hóa triển khai hạ tầng bằng CloudFormation và bước đầu làm quen với AWS CDK.

@@ -1,58 +1,29 @@
 ---
 title: "Worklog Tuần 6"
-date: 2024-01-01
+date: 2026-05-25
 weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 6:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Triển khai các biện pháp Bảo mật (Security) toàn diện cho định danh, dữ liệu và mạng lưới.
+* Nâng cao Độ tin cậy (Reliability) thông qua tính sẵn sàng cao (HA) và sao lưu tự động.
+* Làm chủ mạng doanh nghiệp và các kiến trúc chịu lỗi phức tạp.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
+| 2 | - Liên kết danh tính (AWS SSO) & Xác thực liên miền (Cognito) <br> - Kiểm soát quyền với IAM Permission Boundaries, Policies & Conditions | 25/05/2026 | 25/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Tuân thủ với Security Hub & Giám sát với GuardDuty <br> - Bảo vệ dữ liệu với KMS, Macie, Secrets Manager <br> - Bảo vệ ứng dụng với WAF & Firewall Manager | 26/05/2026 | 26/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Truy cập riêng tư đến S3 với VPC Endpoints & Best practices cho S3 <br> - Vá lỗi hệ thống với EC2 Image Builder | 27/05/2026 | 27/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Bảo vệ dữ liệu với AWS Backup <br> - Tích hợp mạng: VPC Peering & Transit Gateway <br> - Hệ thống nhắn tin SQS và SNS | 28/05/2026 | 28/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Chia sẻ lưu trữ với EBS Multi-Attach <br> - Cụm chịu lỗi Windows Server & SQL Server tính sẵn sàng cao (2019/2022) | 29/05/2026 | 29/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* **Bảo mật toàn diện:** Vận dụng các lớp bảo mật đa tầng (WAF, KMS, Macie, Secrets Manager) và kiểm soát định danh chặt chẽ (SSO, Cognito). Giám sát rủi ro tự động qua Security Hub và GuardDuty.
+* **Mạng và Lưu trữ an toàn:** Cấu hình truy cập S3 không qua Internet bằng VPC Endpoints và tự động hóa vá lỗi máy chủ thông qua EC2 Image Builder.
+* **Độ tin cậy hạ tầng:** Thiết kế mạng diện rộng bằng Transit Gateway, VPC Peering và phân tách hệ thống để tăng khả năng chịu lỗi với SQS, SNS.
+* **Sẵn sàng cao (HA):** Nắm vững kỹ thuật dự phòng (AWS Backup, EBS Multi-Attach) và thiết lập môi trường Cluster/HA cho Windows Server và SQL Server.
