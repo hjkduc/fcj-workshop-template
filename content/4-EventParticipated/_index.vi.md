@@ -1,46 +1,52 @@
 ---
-title: "Các events đã tham gia"
-date: 2024-01-01
+title: "Sự kiện đã tham gia"
+date: 2026-07-09
 weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+Trong suốt quá trình thực tập và tham gia chương trình First Cloud Journey, tôi đã tích cực góp mặt trong 3 sự kiện lớn. Mỗi sự kiện đều là một trải nghiệm đáng nhớ, mang lại cho tôi nhiều kiến thức kỹ thuật mới mẻ, kỹ năng mềm hữu ích cùng những khoảnh khắc giao lưu tuyệt vời với cộng đồng.
 
-> Trong phần này, các bạn cần liệt kê và mô tả chi tiết các sự kiện (event) mà mình đã tham gia trong suốt quá trình thực tập hoặc làm việc. 
-> 
-> Mỗi sự kiện nên được trình bày theo định dạng Event 1, Event 2, Event 3…, kèm theo các thông tin:
-> * Tên sự kiện
-> * Thời gian tổ chức
-> * Địa điểm (nếu có)
-> * Vai trò của bạn trong sự kiện (người tham dự, hỗ trợ tổ chức, diễn giả, v.v.)
-> * Mô tả ngắn gọn nội dung và hoạt động chính trong sự kiện
-> * Kết quả hoặc giá trị đạt được (bài học, kỹ năng mới, đóng góp cho nhóm/dự án)
-> * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
+### [Sự kiện 1: AWS FIRST CLOUD AI JOURNEY COMMUNITY DAY](4.1-Event1/)  
+&emsp;**Tên sự kiện:** AWS FIRST CLOUD AI JOURNEY COMMUNITY DAY  
 
+&emsp;**Thời gian:** 09:00, Ngày 23/05/2026  
 
-Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+&emsp;**Địa điểm:** Tầng 26, Tháp Bitexco, 02 Hải Triều, Phường Sài Gòn, Thành phố Hồ Chí Minh  
 
-### [Event 1](4.1-Event1/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+&emsp;**Vai trò:** Người tham dự (Attendee)  
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+&emsp;**Mô tả ngắn gọn:** Một hội nghị toàn diện về bảo mật tại biên với CloudFront, cơ chế hoạt động của LLM, hệ thống Multi-Agent trên Amazon Bedrock và quy trình phát triển sản phẩm AI nhanh gọn.
 
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+&emsp;**Giá trị nhận được:** Hiểu sâu hơn về cách triển khai cloud cấp doanh nghiệp và tầm quan trọng của một hạ tầng bảo mật, kiến trúc chuẩn mực khi ứng dụng các giải pháp AI.
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+---
 
+### [Sự kiện 2: AWS FIRST CLOUD AI JOURNEY MEET UP](4.2-Event2/)  
+&emsp;**Tên sự kiện:** AWS FIRST CLOUD AI JOURNEY MEET UP  
 
+&emsp;**Thời gian:** 09:00, Ngày 30/05/2026  
 
-### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+&emsp;**Địa điểm:** Tầng 26, Tháp Bitexco, 02 Hải Triều, Phường Sài Gòn, Thành phố Hồ Chí Minh  
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+&emsp;**Vai trò:** Người tham dự (Attendee)  
 
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+&emsp;**Mô tả ngắn gọn:** Một buổi meetup công nghệ tập trung vào các rào cản tâm lý của lập trình viên (sự trì hoãn, sự tự tin), phương pháp thực hành AWS không tốn phí và những góc khuất trong DevOps.
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+&emsp;**Giá trị nhận được:** Học được cách quản lý cảm xúc, vượt qua nỗi sợ thất bại, đồng thời bỏ túi các phương pháp thực hành cloud an toàn, không lo chi phí với các công cụ như Floci.
 
+---
+
+### [Sự kiện 3: Gameshow Cloud Architect](4.3-Event3/)  
+&emsp;**Tên sự kiện:** Gameshow Cloud Architect 
+
+&emsp;**Thời gian:** Ngày 20/06/2026  
+
+&emsp;**Địa điểm:** Tầng 26, Tháp Bitexco, 02 Hải Triều, Phường Sài Gòn, Thành phố Hồ Chí Minh  
+
+&emsp;**Vai trò:** Khán giả  
+
+&emsp;**Mô tả ngắn gọn:** Một sự kiện nội bộ mang tính cạnh tranh cao được trò chơi hóa (gamification). 8 đội thi đối đầu nhau bằng cách trả lời các câu hỏi về kiến trúc Cloud, kết hợp sử dụng chiến thuật và quyền trợ giúp.
+
+&emsp;**Giá trị nhận được:** Củng cố vững chắc kiến thức thiết kế kiến trúc AWS dưới áp lực thời gian, nâng cao kỹ năng làm việc nhóm, phản xạ nhanh và tư duy quản trị rủi ro.

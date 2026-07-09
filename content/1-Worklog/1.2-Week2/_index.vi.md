@@ -7,23 +7,20 @@ pre: " <b> 1.2. </b> "
 ---
 
 ### Mục tiêu tuần 2:
+* Khám phá CSDL nâng cao, mạng CDN và chiến lược dịch chuyển lên Cloud.
+* Triển khai bảo mật toàn diện cho dữ liệu, định danh và ứng dụng.
+* Thiết kế kiến trúc sẵn sàng cao (HA) và chịu lỗi.
 
-* Hiểu về quản lý chi phí, định danh và bảo mật truy cập trên AWS.
-* Tìm hiểu các dịch vụ cốt lõi về mạng, lưu trữ và cơ sở dữ liệu.
-* Nghiên cứu các công cụ tự động hóa, mở rộng quy mô và giám sát hệ thống.
-
-### Các công việc cần triển khai trong tuần này:
+### Các công việc cần triển khai:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Quản lý chi phí với AWS Budgets <br> - Hỗ trợ kỹ thuật với AWS Support <br> - Quản lý truy cập với AWS IAM | 27/04/2026 | 27/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Kiến thức mạng với Amazon VPC <br> - Máy chủ ảo với Amazon EC2 <br> - Cấp quyền ứng dụng với IAM Roles cho EC2 | 28/04/2026 | 28/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Hosting Website tĩnh với Amazon S3 <br> - Kiến thức cơ sở dữ liệu với Amazon RDS | 29/04/2026 | 29/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Đơn giản hóa điện toán với Amazon Lightsail & Containers <br> - Mở rộng quy mô với EC2 Auto Scaling | 30/04/2026 | 30/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - Giám sát hệ thống với Amazon CloudWatch <br> - Quản lý DNS với Amazon Route 53 | 01/05/2026 | 01/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| --- | --- | --- | --- | --- |
+| 2 | - NoSQL DynamoDB & Bộ nhớ đệm ElastiCache <br> - Phân phối nội dung CloudFront | 27/04/2026 | 27/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Di chuyển máy ảo (VM Import) & Cơ sở dữ liệu (DMS) <br> - Phục hồi sau thảm họa | 28/04/2026 | 28/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Định danh (SSO, Cognito) <br> - Bảo vệ ứng dụng với WAF & Firewall Manager | 29/04/2026 | 29/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Bảo vệ dữ liệu (KMS, Macie) & Phát hiện đe dọa (GuardDuty) <br> - Tích hợp mạng Transit Gateway | 30/04/2026 | 30/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Tính sẵn sàng cao (EBS Multi-Attach) <br> - Cụm chịu lỗi Windows & SQL Server | 01/05/2026 | 01/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Kết quả đạt được tuần 2:
-
-* **Bảo mật & Quản lý:** Nắm rõ cơ chế IAM, cách tạo người dùng và gán Role cho EC2 để truy cập tài nguyên an toàn.
-* **Vận hành & Chi phí:** Biết cách thiết lập ngân sách và cảnh báo chi phí qua AWS Budgets; sử dụng CloudWatch để theo dõi hiệu năng hệ thống.
-* **Lưu trữ & Hạ tầng:** Triển khai thành công website tĩnh trên S3 và nắm vững kiến thức cơ bản về cơ sở dữ liệu quan hệ RDS.
-* **Mở rộng hệ thống:** Hiểu về tính linh hoạt của Cloud thông qua Auto Scaling và các giải pháp triển khai nhanh với Lightsail.
+### Kết quả đạt được:
+* **Kiến trúc nâng cao:** Nắm rõ cơ chế bộ nhớ đệm và tối ưu độ trễ toàn cầu bằng CloudFront.
+* **Bảo mật toàn diện:** Triển khai nhiều lớp bảo mật với WAF, mã hóa KMS, theo dõi rủi ro bằng GuardDuty.
+* **Độ tin cậy:** Có khả năng thiết kế hệ thống chịu lỗi, dự phòng thảm họa và cấu hình High Availability cho các hệ thống trọng yếu.

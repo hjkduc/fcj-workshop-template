@@ -7,23 +7,18 @@ pre: " <b> 1.7. </b> "
 ---
 
 ### Week 7 Objectives:
+* Define project scope, finalize architecture, and establish a collaborative environment for the Wakan project.
+* Draft the security and architecture review based on the AWS Well-Architected Framework.
 
-* Boost system Performance using containers, hybrid storage, and serverless databases.
-* Implement CI/CD pipelines and embrace DevOps practices.
-* Master Cost Optimization (FinOps) strategies and big data cost analysis.
-
-### Tasks to be carried out this week:
-| Day | Task | Start Date | Completion Date | Reference Material |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2 | - Use containers with Docker <br> - Orchestrate containers with Amazon ECS <br> - IaC for ECS using CDK | 01/06/2026 | 01/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - CI/CD Pipeline and Deployment automation with AWS CodePipeline <br> - DevOps methodologies | 02/06/2026 | 02/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Hybrid storage with AWS Storage Gateway <br> - Windows file storage with Amazon FSx <br> - Storage Performance Workshop | 03/06/2026 | 03/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Build advanced apps with Amazon DynamoDB <br> - Process orchestration with AWS Step Functions | 04/06/2026 | 04/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - Save costs with Savings Plans and Reserved Instances <br> - Cost visualization & Analysis <br> - Cost data analysis using AWS Glue and Amazon Athena | 05/06/2026 | 05/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks completed this week:
+| Day | Task | Start Date | Completion Date | Status |
+| --- | --- | --- | --- | --- |
+| 2 | - Project Kickoff: Finalize 3-tier features (Free/Plus/Pro) <br> - Setup Git repo and AWS IAM users for team members | 01/06/2026 | 01/06/2026 | Completed |
+| 3 | - Finalize system architecture diagrams | 02/06/2026 | 02/06/2026 | Completed |
+| 4 | - Draft AWS Well-Architected Framework review | 03/06/2026 | 03/06/2026 | Completed |
+| 5 | - Setup initial IAM Roles and Policies | 04/06/2026 | 04/06/2026 | Completed |
+| 6 | - Team sync and architecture sign-off | 05/06/2026 | 05/06/2026 | Completed |
 
 ### Week 7 Achievements:
-
-* **Containerization & CI/CD:** Fully understood the container lifecycle (Docker) and orchestrated them using Amazon ECS and AWS CDK. Successfully built a complete DevOps CI/CD pipeline using AWS CodePipeline.
-* **Storage Performance:** Mastered enterprise storage solutions including hybrid syncing (Storage Gateway) and Windows-compatible file systems (Amazon FSx). Applied technical tuning to boost data retrieval speeds.
-* **Advanced Serverless Architecture:** Enhanced serverless application building using advanced DynamoDB features and coordinated complex microservices workflows using AWS Step Functions.
-* **Cost Optimization (FinOps):** Gained deep insights into Cloud financial optimization. Effectively evaluated Savings Plans and Reserved Instances, and utilized big data tools (AWS Glue, Athena) to extract, query, and visualize cost data.
+* **Architecture Design:** Successfully finalized the complete AWS architecture diagram for Wakan.
+* **Security & Governance:** Drafted the Well-Architected review and established a secure foundation by setting up the initial IAM structure and individual IAM users for the team.

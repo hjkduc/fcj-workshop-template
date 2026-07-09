@@ -1,59 +1,25 @@
 ---
 title: "Worklog Tuần 11"
-date: 2024-01-01
+date: 2026-06-29
 weight: 11
 chapter: false
 pre: " <b> 1.11. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 11:
+* Thực hiện kiểm thử thâm nhập (Pentest) cơ bản để đánh giá bảo mật.
+* Rà soát phân quyền IAM và chống rò rỉ dữ liệu nhạy cảm.
+* Chốt các điểm cần tối ưu trước thềm demo dự án.
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Các công việc đã hoàn thành:
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Trạng thái |
+| --- | --- | --- | --- | --- |
+| 2 | - Họp tổng duyệt kết quả kiểm thử toàn nhóm | 29/06/2026 | 29/06/2026 | Hoàn thành |
+| 3 | - Pentest cơ bản: Thử tấn công qua WAF (XSS, SQLi) | 30/06/2026 | 30/06/2026 | Hoàn thành |
+| 4 | - Rà soát và siết chặt các policy IAM thừa quyền | 01/07/2026 | 01/07/2026 | Hoàn thành |
+| 5 | - Kiểm tra chống rò rỉ tại Secrets Manager | 02/07/2026 | 02/07/2026 | Hoàn thành |
+| 6 | - Vá các lỗ hổng tìm thấy và chốt báo cáo bảo mật | 03/07/2026 | 03/07/2026 | Hoàn thành |
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-
-
-### Kết quả đạt được tuần 11:
-
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+### Kết quả đạt được:
+* **Kiểm thử An toàn thông tin:** Xác thực thành công khả năng chặn đứng các cuộc tấn công web của WAF và đảm bảo tuyệt đối an toàn cho API key.
+* **Tối ưu Đặc quyền:** Hệ thống IAM đã được "dọn dẹp" và siết chặt ở mức tối đa, sẵn sàng cho môi trường Production thu nhỏ.

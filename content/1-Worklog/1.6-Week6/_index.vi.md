@@ -7,23 +7,20 @@ pre: " <b> 1.6. </b> "
 ---
 
 ### Mục tiêu tuần 6:
+* Xây dựng nền tảng về Data Lake và Phân tích Dữ liệu (Data Analytics).
+* Học cách truy vấn dữ liệu serverless và trực quan hóa (BI).
+* Đi sâu vào quy trình Học máy (Machine Learning) với Amazon SageMaker.
 
-* Triển khai các biện pháp Bảo mật (Security) toàn diện cho định danh, dữ liệu và mạng lưới.
-* Nâng cao Độ tin cậy (Reliability) thông qua tính sẵn sàng cao (HA) và sao lưu tự động.
-* Làm chủ mạng doanh nghiệp và các kiến trúc chịu lỗi phức tạp.
-
-### Các công việc cần triển khai trong tuần này:
+### Các công việc cần triển khai:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Liên kết danh tính (AWS SSO) & Xác thực liên miền (Cognito) <br> - Kiểm soát quyền với IAM Permission Boundaries, Policies & Conditions | 25/05/2026 | 25/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Tuân thủ với Security Hub & Giám sát với GuardDuty <br> - Bảo vệ dữ liệu với KMS, Macie, Secrets Manager <br> - Bảo vệ ứng dụng với WAF & Firewall Manager | 26/05/2026 | 26/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Truy cập riêng tư đến S3 với VPC Endpoints & Best practices cho S3 <br> - Vá lỗi hệ thống với EC2 Image Builder | 27/05/2026 | 27/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Bảo vệ dữ liệu với AWS Backup <br> - Tích hợp mạng: VPC Peering & Transit Gateway <br> - Hệ thống nhắn tin SQS và SNS | 28/05/2026 | 28/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - Chia sẻ lưu trữ với EBS Multi-Attach <br> - Cụm chịu lỗi Windows Server & SQL Server tính sẵn sàng cao (2019/2022) | 29/05/2026 | 29/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| --- | --- | --- | --- | --- |
+| 2 | - Cơ bản về Data Lake trên AWS <br> - Kiến trúc Data Lake với dữ liệu riêng | 25/05/2026 | 25/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Tổng quan dịch vụ Data Analytics <br> - Trực quan hóa dữ liệu với QuickSight | 26/05/2026 | 26/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Data Engineering Immersion Day <br> - Truy vấn Serverless với Amazon Athena | 27/05/2026 | 27/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Quản trị PostgreSQL nâng cao (Phần 1 & 2) | 28/05/2026 | 28/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Khái niệm Học máy (Machine Learning) <br> - Huấn luyện mô hình với SageMaker | 29/05/2026 | 29/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Kết quả đạt được tuần 6:
-
-* **Bảo mật toàn diện:** Vận dụng các lớp bảo mật đa tầng (WAF, KMS, Macie, Secrets Manager) và kiểm soát định danh chặt chẽ (SSO, Cognito). Giám sát rủi ro tự động qua Security Hub và GuardDuty.
-* **Mạng và Lưu trữ an toàn:** Cấu hình truy cập S3 không qua Internet bằng VPC Endpoints và tự động hóa vá lỗi máy chủ thông qua EC2 Image Builder.
-* **Độ tin cậy hạ tầng:** Thiết kế mạng diện rộng bằng Transit Gateway, VPC Peering và phân tách hệ thống để tăng khả năng chịu lỗi với SQS, SNS.
-* **Sẵn sàng cao (HA):** Nắm vững kỹ thuật dự phòng (AWS Backup, EBS Multi-Attach) và thiết lập môi trường Cluster/HA cho Windows Server và SQL Server.
+### Kết quả đạt được:
+* **Kiến trúc Data Lake:** Hiểu sự khác biệt giữa cơ sở dữ liệu truyền thống và Data Lake, biết cách lưu trữ dữ liệu phi cấu trúc quy mô lớn.
+* **Phân tích dữ liệu:** Nắm được cách truy vấn SQL trực tiếp lên các file trên S3 thông qua Athena và tạo các biểu đồ thông minh, trực quan bằng QuickSight.
+* **Nền tảng Trí tuệ nhân tạo:** Làm quen với vòng đời của dự án AI/ML và vai trò trung tâm của Amazon SageMaker trong việc xây dựng, huấn luyện mô hình học máy.

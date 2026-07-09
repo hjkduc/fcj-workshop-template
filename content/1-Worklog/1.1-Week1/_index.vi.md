@@ -7,25 +7,19 @@ pre: " <b> 1.1. </b> "
 ---
 
 ### Mục tiêu tuần 1:
+* Làm chủ các dịch vụ nền tảng của AWS bao gồm Điện toán, Lưu trữ và Mạng.
+* Quản lý quyền truy cập với IAM và làm quen công cụ quản lý chi phí.
 
-* Kết nối, làm quen với các thành viên và môi trường thực tập.
-* Hiểu các dịch vụ AWS cơ bản, cách sử dụng AWS Management Console & AWS CLI.
-* Nắm vững kiến thức nền tảng và thực hành triển khai EC2.
-
-### Các công việc cần triển khai trong tuần này:
+### Các công việc cần triển khai:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Làm quen với các thành viên <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập | 20/04/2026 | 20/04/2026 | Nội bộ |
-| 3 | - Tìm hiểu AWS và các loại dịch vụ: <br>&emsp; + Compute, Storage, Networking, Database... | 21/04/2026 | 21/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Tạo tài khoản AWS Free Tier <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** Tạo tài khoản, cài đặt và cấu hình CLI | 22/04/2026 | 22/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Tìm hiểu EC2 cơ bản: Instance types, AMI, EBS... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP | 23/04/2026 | 24/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume | 24/04/2026 | 24/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| --- | --- | --- | --- | --- |
+| 2 | - Cấu hình AWS Console, CLI <br> - Quản lý truy cập với AWS IAM | 20/04/2026 | 20/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Mạng cơ bản với Amazon VPC <br> - Máy chủ ảo EC2 & Auto Scaling | 21/04/2026 | 21/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Lưu trữ tĩnh với Amazon S3 <br> - Cơ sở dữ liệu quan hệ Amazon RDS | 22/04/2026 | 22/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Đơn giản hóa điện toán với Amazon Lightsail <br> - Giám sát hệ thống CloudWatch | 23/04/2026 | 23/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Quản lý DNS với Amazon Route 53 <br> - Quản lý chi phí với AWS Budgets | 24/04/2026 | 24/04/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Kết quả đạt được tuần 1:
-
-* **Kiến thức nền tảng:** Hiểu rõ AWS là gì và nắm vững các nhóm dịch vụ cơ bản (Compute, Storage, Networking, Database).
-* **Quản lý tài khoản:** Đã tạo và cấu hình tài khoản AWS Free Tier thành công để phục vụ thực hành.
-* **Thao tác giao diện:** Làm quen với AWS Management Console, biết cách tìm kiếm và sử dụng dịch vụ từ giao diện web.
-* **Kỹ năng CLI:** Cài đặt và cấu hình thành công AWS CLI (Access Key, Secret Key, Region mặc định).
-    * Sử dụng thành thạo các lệnh cơ bản: Kiểm tra cấu hình, lấy danh sách region, quản lý key pair và kiểm tra trạng thái dịch vụ.
-* **Khả năng vận hành:** Có khả năng kết nối linh hoạt giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
+### Kết quả đạt được:
+* **Hạ tầng cốt lõi:** Cấu hình thành công mạng nội bộ (VPC) và triển khai cụm máy chủ ảo (EC2).
+* **Lưu trữ & CSDL:** Nắm vững Amazon S3 và các khái niệm cơ sở dữ liệu quan hệ được quản lý (RDS).
+* **Quản trị:** Thiết lập quyền truy cập an toàn (IAM), cài đặt cảnh báo ngân sách và giám sát hệ thống với CloudWatch.

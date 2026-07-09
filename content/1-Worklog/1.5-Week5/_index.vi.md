@@ -7,24 +7,20 @@ pre: " <b> 1.5. </b> "
 ---
 
 ### Mục tiêu tuần 5:
+* Học tập phương pháp kiến trúc hiện đại (Từ Monolith sang Microservices).
+* Tìm hiểu quy trình xây dựng ứng dụng Serverless toàn diện (Chuỗi bài học Book Store).
+* Nghiên cứu tích hợp API GraphQL và kiến trúc hướng sự kiện.
 
-* Đi sâu vào Hạ tầng dưới dạng mã (IaC) với AWS CDK nâng cao.
-* Tối ưu hóa tài nguyên EC2, mạng lưới và quản lý chi phí chặt chẽ.
-* Tự động hóa bảo vệ dữ liệu và tối ưu hóa môi trường lập trình.
-
-### Các công việc cần triển khai trong tuần này:
+### Các công việc cần triển khai:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2 | - Tìm hiểu AWS CDK Nâng cao <br> - Chuỗi hội thảo về Cơ sở hạ tầng dưới dạng mã | 18/05/2026 | 18/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 3 | - Tối ưu hóa tài nguyên EC2 để phù hợp với nhu cầu <br> - Giám sát mạng với nhật ký luồng VPC (Flow Logs) | 19/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 4 | - Ủy quyền bảng điều khiển thanh toán <br> - Quản lý chi phí và sử dụng <br> - Quản lý hạn ngạch bằng Service Quotas | 20/05/2026 | 20/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 5 | - Tự động hóa chụp ảnh nhanh với Amazon EBS Data Lifecycle Manager <br> - Phát hiện bất thường cho bản sao lưu EBS | 21/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| 6 | - Môi trường phát triển với AWS Toolkit dành cho VS Code <br> - Tổng kết tuần | 22/05/2026 | 22/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| --- | --- | --- | --- | --- |
+| 2 | - Chuyển dịch sang Microservices <br> - Nền tảng kiến trúc hướng sự kiện | 18/05/2026 | 18/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3 | - Xác thực ứng dụng SPA <br> - Tích hợp dịch vụ AI vào ứng dụng | 19/05/2026 | 19/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Học Backend Serverless: Lambda, S3, DynamoDB | 20/05/2026 | 20/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 5 | - Ghép nối Frontend & Triển khai bằng AWS SAM <br> - Xác thực Cognito | 21/05/2026 | 21/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 6 | - Xử lý bất đồng bộ (SQS/SNS) <br> - Xây dựng API GraphQL với AWS AppSync | 22/05/2026 | 22/05/2026 | <https://cloudjourney.awsstudygroup.com/> |
 
-### Kết quả đạt được tuần 5:
-
-* **Nâng cao năng lực IaC:** Hiểu rõ cách triển khai các kiến trúc phức tạp thông qua AWS CDK Nâng cao và củng cố kỹ năng qua chuỗi hội thảo chuyên sâu.
-* **Tối ưu hóa hiệu năng & Mạng:** Biết cách phân tích, điều chỉnh (right-sizing) máy chủ EC2 và theo dõi lưu lượng truy cập bằng VPC Flow Logs.
-* **Quản trị Tài chính và Tuân thủ:** Thành thạo phân quyền bảng điều khiển thanh toán, phân tích báo cáo chi phí và chủ động kiểm soát giới hạn tài nguyên qua Service Quotas.
-* **Tự động hóa sao lưu an toàn:** Thiết lập thành công các chính sách tự động tạo/xóa snapshot với EBS Data Lifecycle Manager cùng tính năng phát hiện bất thường.
-* **Tăng tốc độ làm việc:** Tích hợp thành công AWS Toolkit vào VS Code, giúp quá trình tương tác và triển khai dịch vụ AWS liền mạch hơn.
+### Kết quả đạt được:
+* **Tư duy Kiến trúc Hiện đại:** Nắm chắc lý thuyết và lợi ích của việc chia nhỏ ứng dụng nguyên khối thành các vi dịch vụ hoạt động dựa trên sự kiện.
+* **Hiểu hệ sinh thái Serverless:** Hoàn thành chuỗi bài học kết nối Backend (Lambda, DynamoDB) và Frontend mà không cần bận tâm đến việc quản lý máy chủ vật lý.
+* **Tối ưu API:** Nắm được ưu thế của GraphQL (AWS AppSync) trong việc truy xuất dữ liệu linh hoạt, kết hợp tốt với cơ chế nhắn tin SQS/SNS để giảm tải hệ thống.
