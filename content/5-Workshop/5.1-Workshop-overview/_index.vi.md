@@ -1,19 +1,64 @@
 ---
-title : "Giới thiệu"
-date : 2024-01-01 
-weight : 1
-chapter : false
-pre : " <b> 5.1. </b> "
+title: "Tổng quan workshop"
+date: 2024-01-01
+weight: 1
+chapter: false
+pre: " <b> 5.1. </b> "
 ---
 
-#### Giới thiệu về VPC Endpoint
+#### Bạn sẽ xây dựng gì
 
-+ Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng.
-+ Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint  PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL.
+Trong workshop này, bạn sẽ triển khai kiến trúc serverless cốt lõi của **Wakan** — một ứng dụng gợi ý lịch trình du lịch tại Việt Nam nhờ AI. Sau khi hoàn thành, bạn sẽ có luồng end-to-end hoạt động:
 
-#### Tổng quan về workshop
-Trong workshop này, bạn sẽ sử dụng hai VPC.
-+ **"VPC Cloud"** dành cho các tài nguyên cloud như Gateway endpoint và EC2 instance để kiểm tra.
-+ **"VPC On-Prem"** mô phỏng môi trường truyền thống như nhà máy hoặc trung tâm dữ liệu của công ty. Một EC2 Instance chạy phần mềm StrongSwan VPN đã được triển khai trong "VPC On-prem" và được cấu hình tự động để thiết lập đường hầm VPN Site-to-Site với AWS Transit Gateway. VPN này mô phỏng kết nối từ một vị trí tại TTDL (on-prem) với AWS cloud. Để giảm thiểu chi phí, chỉ một phiên bản VPN được cung cấp để hỗ trợ workshop này. Khi lập kế hoạch kết nối VPN cho production workloads của bạn, AWS khuyên bạn nên sử dụng nhiều thiết bị VPN để có tính sẵn sàng cao.
+> Người dùng mở website → đăng nhập qua Cognito → chọn tùy chọn chuyến đi trên giao diện → API Gateway chuyển hướng đến Lambda Orchestrator → Orchestrator kiểm tra cache và quota → gọi Lambda AI Processor → trả về lịch trình có cấu trúc.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+#### Kiến trúc tổng quan
+
+<!-- TODO: screenshot/diagram - kiến trúc tổng quan Wakan -->
+![Kiến trúc Wakan](/images/5-Workshop/5.1-Workshop-overview/architecture.jpg)
+
+Hệ thống được chia thành 4 lớp:
+
+**Lớp 1 — Biên & Frontend**
+- Amazon S3 lưu trữ ứng dụng web tĩnh (HTML/CSS/JS).
+- Amazon CloudFront phân phối nội dung toàn cầu và chuyển tiếp các request `/api/*` đến API Gateway.
+- AWS WAF (tùy chọn) lọc các truy cập HTTP/HTTPS độc hại ở biên.
+
+**Lớp 2 — Xác thực & API**
+- Amazon Cognito quản lý đăng ký, đăng nhập và token JWT cho người dùng.
+- Cognito Authorizer trên API Gateway xác thực mọi request trước khi chuyển tiếp.
+- Usage Plan áp dụng giới hạn tốc độ theo từng gói dịch vụ.
+
+**Lớp 3 — Xử lý nghiệp vụ (Lambda)**
+- **Lambda Orchestrator:** validate đầu vào, kiểm tra quota người dùng từ DynamoDB, tạo cache key từ tọa độ làm tròn + tùy chọn, trả kết quả cache nếu có, nếu không thì chuyển sang AI Processor.
+- **Lambda AI Processor:** lấy API key từ Secrets Manager, xây dựng prompt có cấu trúc, gọi mô hình AI bên ngoài, ép định dạng JSON đầu ra và xử lý lỗi fallback.
+
+**Lớp 4 — Dữ liệu (DynamoDB)**
+- **Users/Subscriptions:** thông tin người dùng, gói hiện tại (Free/Plus/Pro), số lượt dùng còn lại mỗi ngày.
+- **Cache:** lịch trình đã tạo trước đó, key dựa trên tọa độ làm tròn + tùy chọn; TTL thay đổi theo độ dài chuyến (6–12h cho ngắn ngày, 24–48h cho nhiều ngày).
+- **Verified Places:** dữ liệu địa điểm đã kiểm chứng, chỉ dùng cho gói Pro để ngăn AI "ảo tưởng".
+
+#### Luồng request đi như thế nào
+
+<!-- TODO: screenshot/diagram - sơ đồ sequence flow request -->
+
+
+1. Người dùng truy cập `www.wakan.id.vn` — CloudFront phục vụ static assets từ S3.
+2. Người dùng đăng nhập qua Cognito Hosted UI → nhận ID token + access token.
+3. Người dùng chọn tùy chọn chuyến đi trên UI (đối tượng đi cùng, ngân sách, số ngày, phương tiện, loại trải nghiệm).
+4. Frontend gửi POST `/api/itinerary` kèm token trong header Authorization.
+5. API Gateway xác thực JWT qua Cognito Authorizer → chuyển tiếp đến Lambda Orchestrator.
+6. Orchestrator đọc gói & quota người dùng từ DynamoDB → tạo cache key.
+7. Nếu cache hit → trả ngay lịch trình (không gọi AI).
+8. Nếu cache miss → invoke Lambda AI Processor.
+9. AI Processor lấy API key từ Secrets Manager → xây prompt → gọi AI model → validate JSON output → lưu kết quả vào bảng Cache → trả về Orchestrator.
+10. Orchestrator trừ quota trong DynamoDB → trả lịch trình về frontend.
+
+
+#### Những phần không nằm trong phạm vi workshop
+
+Workshop này tập trung vào core serverless backend. Các phần sau được lược bỏ có chủ đích:
+- Phát triển frontend code (sử dụng sẵn static site)
+- Tích hợp thời tiết / bản đồ
+- Thiết lập Amazon Location Service
+- Pipeline CI/CD
