@@ -1,126 +1,39 @@
 ---
-title: "Blog 2"
-date: 2024-01-01
-weight: 1
+title: "Blog 2: Preventing 'forgot to turn off' AWS resources"
+date: 2026-07-10
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Preventing "forgot to turn off" AWS resources: Budgets, Cost Anomaly Detection, and Tagging
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+When getting started with AWS, the biggest fear for many isn't code bugs, but rather being charged unexpectedly for forgetting to turn off resources. 
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+A familiar scenario: you create an EC2 instance for a lab, spin up RDS to test a database, and then accidentally leave them running in the background for a week. By the end of the month, your billing dashboard reveals an unexpected surge in costs. To prevent this, you should build a basic Cost Governance layer from day one using three tools: **AWS Budgets, AWS Cost Anomaly Detection, and Cost Allocation Tags.**
 
 ---
 
-## Architecture Guidance
+## Solution Highlights
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+### 1. Build an Early Warning System with AWS Budgets
+* **The Problem:** Checking bills manually every day is impractical and easily forgotten.
+* **The Solution:** Use **AWS Budgets** to set a fixed monthly budget (e.g., a $10/month limit for a lab account).
+* **Optimization:** This service doesn't just alert you based on Actual costs, but also Forecasted costs. If you've only spent $2, but the algorithm forecasts you'll exceed the $10 threshold by month's end, you will receive an early warning email.
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+![AWS Budgets Dashboard](/images/Blog2.jpg)
 
-**The solution architecture is now as follows:**
+### 2. Detect Irregularities with AWS Cost Anomaly Detection
+* **Core Risk:** With a new account, forecasted alerts might not be highly accurate initially. If your Access Key is leaked or a script provisions expensive resources by mistake, costs will spike rapidly before a Budget Alert triggers.
+* **The Solution:** Activate **AWS Cost Anomaly Detection**. This service uses advanced Machine Learning models to continuously monitor and learn your account's daily spending patterns.
+* **The Result:** The system sends early alerts when it detects anomalous spending, protecting you from resource abuse and costly mistakes.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
-
----
-
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
-
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+### 3. Categorize and Isolate Costs with Tagging
+* **The Problem:** When running multiple projects concurrently, a consolidated bill makes it difficult to distinguish which service belongs to which project.
+* **The Solution:** Establish strict **Tagging** rules from the moment resources are provisioned (e.g., `Project = GraduationThesis`, `Environment = Dev`, `Purpose = Lab`).
+* **Technical Note:** Tags must be activated in the *Cost Allocation Tags* section of the Billing console to be used for cost allocation.
 
 ---
 
-## Technology Choices and Communication Scope
-
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
-
----
-
-## The Pub/Sub Hub
-
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
-
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
-
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+## Conclusion
+Cloud Cost Management (FinOps) shouldn't be about waiting until the end of the month to check your bill and feel regret. A financially secure AWS account requires not just knowing how to deploy resources, but knowing how to monitor, categorize, and clean them up promptly.

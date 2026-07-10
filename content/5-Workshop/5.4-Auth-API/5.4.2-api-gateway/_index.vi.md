@@ -72,9 +72,6 @@ Cấu trúc resource khuyến nghị:
 
 6. Method Response → thêm `200` với content-type `application/json`
 
-<!-- TODO: screenshot - resource /itinerary + POST method + authorizer attached -->
-![POST /itinerary method](/images/5-Workshop/5.4-Auth-API/apigw-method.png)
-
 #### Bước 4 — Bật CORS (nếu gọi thẳng domain API)
 
 Nếu browser gọi **URL API Gateway** trực tiếp (không chỉ qua CloudFront same origin), bật CORS:
@@ -83,9 +80,6 @@ Nếu browser gọi **URL API Gateway** trực tiếp (không chỉ qua CloudFro
 2. Allow methods: `POST, OPTIONS`
 3. Allow headers: `Authorization, Content-Type`
 4. Allow origin: CloudFront của bạn `https://dxxxx.cloudfront.net` (hoặc `*` chỉ cho lab)
-
-<!-- TODO: screenshot - Enable CORS -->
-![Enable CORS](/images/5-Workshop/5.4-Auth-API/apigw-cors.png)
 
 {{% notice tip %}}
 Khi frontend và API cùng domain CloudFront, same-origin giúp giảm nhu cầu CORS. Vẫn hữu ích khi test frontend local.
@@ -97,9 +91,6 @@ Khi frontend và API cùng domain CloudFront, same-origin giúp giảm nhu cầu
 2. **Stage name:** `prod` (hoặc `dev`)
 3. Ghi lại **Invoke URL**, ví dụ:  
    `https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod`
-
-<!-- TODO: screenshot - stage prod + Invoke URL -->
-![API deployed](/images/5-Workshop/5.4-Auth-API/apigw-deploy.png)
 
 #### Bước 6 — Test bằng curl
 
@@ -123,10 +114,6 @@ curl -i -X POST \
   -H "Authorization: $TOKEN" \
   -d '{"budget":"low","days":1,"companions":"solo"}'
 ```
-
-<!-- TODO: screenshot - terminal 401 without token + 200 with token -->
-![curl auth test](/images/5-Workshop/5.4-Auth-API/apigw-curl-test.png)
-
 #### Sẽ thay đổi gì ở Bước 5.6
 
 | Hiện tại (5.4) | Sau này (5.6) |

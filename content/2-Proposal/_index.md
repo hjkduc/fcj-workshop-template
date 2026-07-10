@@ -1,115 +1,163 @@
 ---
 title: "Proposal"
-date: 2024-01-01
+date: 2026-07-10
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
-
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+# Wakan - Personalised Travel Assistant Using AI
+## A Serverless AWS Solution for Tailored and Verified Travel Itineraries
 
 ### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+**Wakan** is an AI-powered personalized travel assistant system designed specifically for travel within Vietnam. It allows users to automatically generate optimized itineraries based on their real-time location, budget, travel duration, preferred mode of transport, travel companions, and preferred type of experience. 
+
+By leveraging a fully Serverless architecture on AWS (incorporating AWS WAF, Amazon CloudFront, Amazon S3, Amazon API Gateway, Amazon Cognito, AWS Lambda, Amazon DynamoDB, AWS Secrets Manager, and Amazon CloudWatch), Wakan ensures high performance, minimal operational overhead, robust security, and seamless scalability to handle user growth.
+
+---
 
 ### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+#### What’s the Problem?
+Planning a travel itinerary is currently a highly fragmented and time-consuming process. Travelers must manually research destinations across various social media platforms, blogs, and maps, and then stitch together routes, timings, and budgets. 
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+While general-purpose generative AI models (such as ChatGPT or Gemini) can assist in writing itineraries, they suffer from two major flaws:
+1. **User Prompting Complexity**: Users must write detailed, complex prompts (Prompt Engineering) to obtain structured, relevant results.
+2. **AI Hallucinations**: Standard LLMs often invent non-existent locations, output incorrect geographic distances, or suggest routes that do not match the local Vietnamese transport context.
+
+#### The Solution
+**Wakan** solves these issues by providing a structured, choice-based user interface rather than a free-form chat. Users simply select their parameters (e.g., solo travel, family trip, low/high budget, short/long distance, single or multi-day). 
+- **Controlled Inputs**: Restricting inputs to UI selection boxes reduces the risk of *Prompt Injection* attacks and ensures reliable inputs.
+- **Server-Side Validation**: Backend validation checks ensure requests submitted directly via the API remain valid.
+- **Structured Outputs**: The backend forces the AI model to return structured data matching a strict JSON schema, which is parsed and mapped directly onto the user interface.
+- **Verified Places**: For premium tiers, the AI is grounded using a database of pre-verified locations, eliminating hallucinated or inaccurate recommendations.
+
+#### Benefits and Return on Investment (ROI)
+- **Time Saving**: Reduces travel planning time by up to 90% by consolidating route planning, place selection, and scheduling into a single click.
+- **Serverless Cost-Efficiency**: The entire architecture runs serverless, meaning near-zero costs when idle and pay-per-use scaling. It perfectly aligns with the team's AWS Credits.
+- **API Cost Optimization**: An aggressive caching layer on DynamoDB hashes rounded user locations and preferences, delivering instant hits for similar requests and avoiding expensive LLM API invocations.
+
+---
 
 ### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+The platform is built using a highly secure, serverless multi-tier AWS architecture to manage user authentication, data caching, verified location grounding, and AI processing.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+![Wakan Solution Architecture](/images/kientruc.jpg)
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+#### AWS Services Used
+- **AWS WAF**: Blocks malicious web traffic, SQL injection, and bots at the HTTP/HTTPS boundary.
+- **Amazon CloudFront**: Acts as a Content Delivery Network (CDN) to host static frontend assets globally and route dynamic `/api/*` traffic to the API Gateway.
+- **Amazon S3**: Hosts the static web application files (HTML, CSS, JS) securely.
+- **Amazon API Gateway**: Serves as the secure REST API gateway, integrating with Amazon Cognito for authentication and managing technical rate limits.
+- **Amazon Cognito**: Handles secure user registration, login, and token-based (JWT) session authorization.
+- **AWS Lambda**: Divided into two dedicated functions for separation of concerns:
+  1. **AWS Lambda (Orchestrator)**: Handles request validation, queries DynamoDB for quotas/subscriptions, computes cache keys, and handles caching logic.
+  2. **AWS Lambda (AI Processor)**: Connects to external AI APIs, retrieves credentials from Secrets Manager, formats prompts, and validates JSON structure.
+- **Amazon DynamoDB**: A fully managed NoSQL database hosting three key tables:
+  1. `Users/Subscriptions`: Stores user accounts, active subscription tiers, and remaining daily quotas.
+  2. `Cache`: Stores previously generated itineraries, indexed by rounded GPS coordinates and selections, using a Time-To-Live (TTL) to expire stale routes.
+  3. `Verified Places`: Contains curated, verified local places used to ground AI responses for high-tier packages.
+- **AWS Secrets Manager**: Securely stores API keys for external LLM endpoints.
+- **Amazon CloudWatch**: Aggregates logs and monitors metrics (invocation errors, cache hit rates) with CloudWatch Alarms.
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+#### Component Design
+1. **Edge and Content Delivery**: AWS WAF and CloudFront secure the ingress. CloudFront splits traffic: static requests pull from S3, while API calls are forwarded to API Gateway.
+2. **Authentication & Authorization**: Cognito issues JSON Web Tokens (JWT) upon successful login. API Gateway uses a Cognito Authorizer to validate these tokens before executing Lambda functions.
+3. **Business Logic & AI Orchestration**: 
+   - **Lambda Orchestrator** checks the user's daily quota in DynamoDB. It hashes the input parameters (including rounded latitude/longitude to maximize cache hits) to search the `Cache` table. 
+   - If a cache miss occurs, it invokes **Lambda AI Processor**.
+   - **Lambda AI Processor** fetches the API key from Secrets Manager, queries the LLM, parses the response, and ensures compliance with the target JSON schema before returning it.
+4. **Subscription Tiers**:
+   - **Free**: Basic features, restricted daily quota, local/short itineraries.
+   - **Plus**: Extended daily quota, support for multi-day and long-distance itineraries.
+   - **Pro**: Premium experience utilizing the verified location database to completely prevent hallucinated spots.
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+---
 
 ### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+#### Implementation Phases
+The project is scheduled across 6 weeks (from Week 7 to Week 12) during the internship:
+- **Phase 1: Design & Planning (Week 7)**: Write detailed use-cases, define the DynamoDB schemas, and create the UI wireframes using Google Drawings/Jamboard.
+- **Phase 2: Infrastructure Setup (Week 8)**: Set up S3 web hosting, CloudFront, Cognito User Pools, and define IAM roles following the principle of least privilege.
+- **Phase 3: Core Backend & Data Logic (Week 9)**: Write Lambda Orchestrator (cache & quota checks) and compile the `Verified Places` dataset. Secure credentials in Secrets Manager.
+- **Phase 4: Frontend & Integration (Week 10)**: Build responsive web UI components, integrate maps, connect Cognito auth, and hook up the REST API.
+- **Phase 5: Testing & Security Audit (Week 11)**: Implement CloudWatch logging, set up AWS Budgets, perform security scanning on API Gateway/Lambda, and optimize execution cold-starts.
+- **Phase 6: Deployment & Delivery (Week 12)**: Run final integration testing, record a walkthrough demo video, and complete the project documentation.
+
+#### Technical Requirements
+- **Infrastructure as Code (IaC)**: Deploy resources programmatically using AWS CDK or Serverless Framework.
+- **Backend Language**: Node.js/TypeScript for AWS Lambda to ensure rapid startup and execution speeds.
+- **AI Structured Outputs**: Integration with AI models that support strict JSON output schema validation.
+- **API Mapping Service**: Integration with map APIs (e.g., Amazon Location Service) for routing calculations.
+
+---
 
 ### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+
+| Week | Team Member | Planned Tasks |
+|---|---|---|
+| **Week 7** | **All Members** | Meet to align on Free/Plus/Pro scopes, finalize architectural design, set up git repo, and initialize IAM accounts. |
+| | Trần Hữu Khang | Define user flow use-cases & sketch DynamoDB tables. |
+| | Lê Trần Anh Đức | Finalize system architecture documentation and draft security policies. |
+| | Đinh Hoàng Vương | Design wireframes on Google Drawings/Jamboard for the choice-based questionnaire flow. |
+| | Trần Phúc Đăng | Research external LLM APIs and draft the initial prompt templates. |
+| **Week 8** | **All Members** | Define API request/response contracts between Frontend, Orchestrator, and AI Processor. |
+| | Trần Hữu Khang | Create API Gateway structure and Lambda Orchestrator skeleton. |
+| | Lê Trần Anh Đức | Provision AWS WAF, CloudFront, S3 buckets, and Cognito User Pool. |
+| | Đinh Hoàng Vương | Implement static UI layouts and wire up Cognito authentication. |
+| | Trần Phúc Đăng | Implement Lambda AI Processor skeleton and test LLM integrations. |
+| **Week 9** | **All Members** | Perform peer code reviews to ensure quota and cache schemas align. |
+| | Trần Hữu Khang | Implement full Orchestrator logic: quota calculations and coordinate rounding cache. |
+| | Lê Trần Anh Đức | Configure Secrets Manager and set up API Gateway Usage Plans (rate limits). |
+| | Đinh Hoàng Vương | Bind frontend components to the live REST API and handle loading/error states. |
+| | Trần Phúc Đăng | Refine prompt templates and build the `Verified Places` DynamoDB dataset. |
+| **Week 10** | **All Members** | Run initial end-to-end integration tests (UI -> API -> LLM) and fix bugs. |
+| | Trần Hữu Khang | Debug cache hit/miss flows and configure custom TTL settings. |
+| | Lê Trần Anh Đức | Set up CloudWatch Logs/Alarms and create AWS Budget alerts. |
+| | Đinh Hoàng Vương | Render itinerary results on interactive maps and responsive timelines. |
+| | Trần Phúc Đăng | Validate output quality for Free, Plus, and Pro packages. |
+| **Week 11** | **All Members** | Review integration test results and identify system bottlenecks. |
+| | Trần Hữu Khang | Conduct load testing and optimize Lambda memory/timeout configurations. |
+| | Lê Trần Anh Đức | Conduct penetration testing (WAF bypass checks, IAM least-privilege audits). |
+| | Đinh Hoàng Vương | Polish UI/UX, resolve mobile responsiveness issues, and prep demo. |
+| | Trần Phúc Đăng | Write unit and integration tests; compile QA metrics. |
+| **Week 12** | **All Members** | Execute final demo runs, record video walkthrough, compile report, and present. |
+
+---
 
 ### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+Since Wakan is built entirely on serverless services, it is highly cost-effective:
+- **AWS Lambda**: $0.00/month (Free Tier covers up to 1 million requests).
+- **Amazon DynamoDB**: ~$0.50/month (using On-Demand scaling for Free/Plus/Pro tables).
+- **Amazon S3 & CloudFront**: ~$0.20/month for static web hosting and global distribution.
+- **Amazon Cognito**: $0.00/month (Free Tier supports up to 50,000 MAUs).
+- **AWS Secrets Manager**: $0.40/month (1 active secret for AI API Key).
+- **AWS WAF**: ~$6.00/month (Base charge of $5.00 for Web ACL and $1.00 for custom rules).
+- **Amazon CloudWatch**: ~$0.50/month for logs and basic alarms.
+- **External AI API**: Pay-as-you-go (starts with free credits or minimal API token costs).
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+**Total Infrastructure Cost**: **~$7.60 USD / month** (excluding external LLM tokens), which fits comfortably within the student AWS Credits.
 
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+---
 
 ### 7. Risk Assessment
+
 #### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+- **AI Hallucinations / Bad Data**: High Impact, Medium Probability.
+- **AI API Cost Spikes**: Medium Impact, High Probability.
+- **API Abuse / Spam**: Medium Impact, Medium Probability.
+- **Credential Leakage**: Critical Impact, Low Probability.
 
 #### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+- **Hallucinations**: Enforce grounding using `Verified Places` for the Pro package. Limit LLMs to selection and sequencing rather than creative writing.
+- **AI API Costs**: Implement caching in DynamoDB (coordinates rounded to maximize cache hits). Cache responses up to 48 hours for multi-day trips.
+- **Spam**: Implement Cognito token authentication, rate limit clients via API Gateway Usage Plans, and enforce daily quotas inside the Lambda Orchestrator.
+- **Leakage**: Use AWS Secrets Manager. Do not commit credentials to Git. Use IAM Roles with least-privilege access.
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+---
 
 ### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+1. **Fully Functioning MVP**: A responsive web application where users can input travel preferences and receive structured, highly reliable itineraries.
+2. **Optimized Serverless Architecture**: A secure cloud architecture on AWS that costs nearly nothing when idle and scales instantly during spikes.
+3. **Comprehensive Knowledge Base**: Complete documentation detailing API contracts, security practices, and cost controls for serverless AI integrations.

@@ -1,126 +1,41 @@
 ---
-title: "Blog 1"
-date: 2024-01-01
+title: "Blog 1: Đừng để EC2 chạy xuyên đêm: Giảm mạnh chi phí AWS"
+date: 2026-07-10
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Đừng để EC2 chạy xuyên đêm: Cách mình giảm mạnh chi phí AWS bằng Spot Instance + Auto Scaling + Scheduler
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+Khi triển khai các dự án học tập, đồ án hoặc môi trường thử nghiệm trên AWS, nhiều bạn thường có thói quen vào EC2 Console, bấm tạo một Instance và để cấu hình mặc định là On-Demand. Cách này đơn giản, dễ dùng, nhưng nếu để server chạy xuyên đêm hoặc xuyên cuối tuần thì chi phí có thể tăng lên khá nhanh.
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Việc duy trì các server On-Demand cho các môi trường thử nghiệm (Development/Staging) không yêu cầu uptime 24/7 là một sự lãng phí lớn. Để giải quyết bài toán này, dự án của mình ứng dụng giải pháp **Tối ưu hóa dung lượng dư thừa (Spot Instances)** kết hợp với kiến trúc chịu lỗi linh hoạt để cắt giảm chi phí đến mức tối đa.
 
 ---
 
-## Hướng dẫn kiến trúc
+## Những Điểm Nổi Bật Của Giải Pháp
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+### 1. Chiến lược săn tài nguyên giá rẻ với AWS Spot Instances
+* **Vấn đề:** Giá thuê EC2 On-Demand cố định theo giờ khá cao.
+* **Giải pháp:** Tận dụng lượng tài nguyên phần cứng dư thừa chưa có người thuê của AWS thông qua **Spot Instances**. AWS bán lại lượng dung lượng này với mức giảm tới 90% so với giá On-Demand.
+* **Kết quả:** Chi phí EC2 có thể giảm rất mạnh, từ vài chục USD/tháng xuống chỉ còn vài USD, giúp bạn thoải mái test lab mà không lo cạn tiền.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+### 2. Cơ chế phòng ngự chủ động: Đón đầu "Cú thu hồi" từ AWS
+* **Rủi ro cốt lõi:** AWS có thể thu hồi Spot capacity bất kỳ lúc nào và người dùng chỉ có tối đa 2 phút để xử lý.
+* **Giải pháp (Thiết kế Stateless):** Điểm mấu chốt là tuyệt đối không lưu dữ liệu quan trọng trực tiếp trên ổ đĩa cục bộ của EC2. Toàn bộ file đẩy sang Amazon S3, Database chạy trên Amazon RDS, và Log đẩy ra CloudWatch Logs.
+* **Kết quả:** Ứng dụng hoàn toàn mang tính chất **Stateless**, tắt đi và khởi động lại nhanh chóng mà không mất dữ liệu.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+![Sơ đồ kiến trúc Stateless](/images/Blog1.jpg)
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+### 3. Tự động hóa khôi phục hạ tầng bằng EC2 Auto Scaling
+Mình đặt EC2 Spot vào trong một **Auto Scaling Group (ASG)** và kích hoạt tính năng **Capacity Rebalancing**. 
+ASG sẽ chủ động phản ứng ngay khi nhận được tín hiệu `rebalance recommendation` từ AWS, tự động tìm kiếm một Availability Zone khác hoặc loại instance tương đương để khởi tạo máy chủ mới thay thế.
 
----
-
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
-
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+### 4. Quản lý bật/tắt thông minh với AWS Instance Scheduler
+Hệ thống tích hợp thêm **Instance Scheduler on AWS** để tự động hóa tắt (Stop) toàn bộ server vào lúc 19h tối và tự động bật lại vào lúc 7h sáng hôm sau (thứ 2 - thứ 6), ngủ đông hoàn toàn vào cuối tuần. Điều này giúp loại bỏ triệt để tình trạng "quên tắt server".
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
-
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
-
----
-
-## The pub/sub hub
-
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
-
----
-
-## Core microservice
-
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
-
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
-
----
-
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
-
----
-
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
-
----
-
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+## Kết Luận
+Tối ưu chi phí trên Cloud (FinOps) không chỉ đơn giản là chọn instance cấu hình thấp. Một kiến trúc tốt cần biết chọn đúng pricing model, thiết kế ứng dụng chịu lỗi (Design for Failure), lưu dữ liệu đúng nơi và tự động hóa vòng đời tài nguyên.

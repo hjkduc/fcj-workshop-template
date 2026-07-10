@@ -1,108 +1,162 @@
 ---
 title: "Bản đề xuất"
-date: 2024-01-01
+date: 2026-07-10
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
-Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
+# Wakan - Trợ Lý Du Lịch Cá Nhân Hóa Bằng AI
+## Giải pháp AWS Serverless hợp nhất cho việc gợi ý lịch trình du lịch cá nhân hóa và tin cậy
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+### 1. Tóm tắt điều hành
+**Wakan** là hệ thống trợ lý du lịch cá nhân hóa bằng AI tại Việt Nam, giúp người dùng tự động thiết kế lịch trình tối ưu dựa trên vị trí địa lý thực tế, ngân sách, thời gian rảnh, phương tiện di chuyển, đối tượng đi cùng và loại trải nghiệm mong muốn. 
 
-### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+Bằng cách áp dụng kiến trúc hoàn toàn Serverless trên AWS (bao gồm AWS WAF, Amazon CloudFront, Amazon S3, Amazon API Gateway, Amazon Cognito, AWS Lambda, Amazon DynamoDB, AWS Secrets Manager và Amazon CloudWatch), dự án hướng tới việc giảm thiểu chi phí vận hành, nâng cao tính bảo mật, và đảm bảo khả năng tự động mở rộng linh hoạt theo số lượng người dùng.
 
-### 2. Tuyên bố vấn đề  
-*Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+---
 
-*Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+### 2. Tuyên bố vấn đề
 
-*Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+#### Vấn đề hiện tại
+Việc lên lịch trình du lịch thủ công là một quy trình tốn nhiều thời gian và công sức. Người dùng phải tự tìm hiểu thông tin rời rạc từ nhiều nguồn (mạng xã hội, blog, bản đồ) rồi tự chắp vá lịch trình, đường đi và ngân sách. 
 
-### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+Khi sử dụng các mô hình AI dạng chat tự do (như ChatGPT hay Gemini), người dùng gặp hai rào cản lớn:
+1. **Độ phức tạp khi viết Prompt**: Người dùng phải biết cách viết prompt chi tiết (Prompt Engineering) mới nhận được kết quả có cấu trúc mong muốn.
+2. **AI Ảo tưởng (Hallucination)**: Mô hình AI thường tự bịa ra các địa điểm không có thật, đưa ra khoảng cách địa lý sai lệch hoặc gợi ý lộ trình không phù hợp với thực tế giao thông tại Việt Nam.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+#### Giải pháp
+**Wakan** giải quyết triệt để các vấn đề này bằng cách thiết kế giao diện web dạng lựa chọn có sẵn thay vì cho phép người dùng nhập prompt tự do. Người dùng chỉ cần tích chọn các thông số (ví dụ: đi một mình/gia đình, ngân sách thấp/cao, đi gần/xa, đi trong ngày/nhiều ngày).
+- **Kiểm soát đầu vào (Input Control)**: Giới hạn lựa chọn trên UI giúp kiểm soát dữ liệu đầu vào tốt hơn, loại bỏ rủi ro tấn công *Prompt Injection*.
+- **Kiểm tra ở Backend**: Dữ liệu gửi lên vẫn được kiểm tra chặt chẽ ở Lambda Orchestrator để tránh request bất hợp lệ trực tiếp qua API.
+- **Chuẩn hóa đầu ra (Structured Outputs)**: Ép mô hình AI trả về dữ liệu tuân thủ strict JSON schema cố định để frontend dễ dàng hiển thị.
+- **Xác thực địa điểm (Verified Places)**: Tích hợp cơ sở dữ liệu các địa điểm đã kiểm chứng cho gói Pro để loại bỏ hoàn toàn tình trạng AI tự sinh thông tin sai lệch.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+#### Lợi ích và Hoàn vốn đầu tư (ROI)
+- **Tiết kiệm thời gian**: Giúp người dùng tiết kiệm đến 90% thời gian lên kế hoạch du lịch nhờ tạo lịch trình tự động chỉ trong vài giây.
+- **Tối ưu chi phí Serverless**: Không mất chi phí duy trì máy chủ rảnh. Chi phí phát sinh theo lượng sử dụng thực tế và hoàn toàn nằm trong gói AWS Credits của nhóm.
+- **Tối ưu chi phí gọi AI**: Sử dụng cơ chế cache thông minh trên DynamoDB dựa trên tọa độ vị trí làm tròn và các lựa chọn của người dùng, giúp trả kết quả lập tức cho các yêu cầu tương tự mà không cần gọi lại API AI đắt đỏ.
 
-*Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
+---
 
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+### 3. Kiến trúc giải pháp
+Hệ thống được thiết kế theo mô hình Serverless trên AWS nhằm đảm bảo tính bảo mật và khả năng co giãn tự động.
 
-### 4. Triển khai kỹ thuật  
-*Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+![Kiến trúc hệ thống Wakan](/images/kientruc.jpg)
 
-*Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+#### Dịch vụ AWS sử dụng
+- **AWS WAF**: Lọc các request bất thường, chống bot và các cuộc tấn công tầng ứng dụng (HTTP/HTTPS).
+- **Amazon CloudFront**: Phân phối giao diện web tĩnh từ S3 tới người dùng toàn cầu với độ trễ thấp và chuyển tiếp request API `/api/*` tới API Gateway.
+- **Amazon S3**: Lưu trữ an toàn các asset tĩnh của Frontend (HTML, CSS, JS).
+- **Amazon API Gateway**: Cổng REST API chính, tích hợp xác thực token và quản lý Usage Plans để giới hạn tần suất request.
+- **Amazon Cognito**: Quản lý đăng ký, đăng nhập và xác thực phiên làm việc bằng JSON Web Token (JWT).
+- **AWS Lambda**: Được chia thành hai hàm xử lý độc lập để tách biệt trách nhiệm:
+  1. **AWS Lambda (Orchestrator)**: Điều phối nghiệp vụ chính: kiểm tra gói người dùng và quota sử dụng từ DynamoDB, tính toán cache key và lưu lịch trình mới.
+  2. **AWS Lambda (AI Processor)**: Giao tiếp trực tiếp với External AI API, lấy API Key bảo mật từ Secrets Manager, tạo prompt có cấu trúc và validate JSON đầu ra.
+- **Amazon DynamoDB**: Cơ sở dữ liệu NoSQL lưu trữ 3 bảng chính:
+  1. `Users/Subscriptions`: Lưu thông tin tài khoản, gói dịch vụ (Free/Plus/Pro) và quota lượt dùng còn lại trong ngày.
+  2. `Cache`: Lưu trữ các hành trình đã tạo kèm theo cơ chế tự hủy TTL (6-12 giờ cho chuyến đi ngắn, 24-48 giờ cho chuyến đi dài).
+  3. `Verified Places`: Danh sách địa điểm đã được nhóm kiểm chứng thực tế nhằm phục vụ cho gói Pro.
+- **AWS Secrets Manager**: Lưu trữ an toàn các API Key của bên thứ ba (AI API).
+- **Amazon CloudWatch**: Ghi nhận logs, theo dõi metrics và phát cảnh báo (CloudWatch Alarms) khi hệ thống gặp lỗi.
 
-### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+#### Thiết kế thành phần
+1. **Phân phối và Biên dịch**: WAF và CloudFront bảo vệ biên hệ thống. CloudFront tự động định tuyến traffic: file tĩnh tải từ S3, REST API chuyển tiếp tới API Gateway.
+2. **Xác thực người dùng**: Đăng ký/đăng nhập qua Cognito. API Gateway tích hợp Cognito Authorizer để kiểm tra JWT hợp lệ của request trước khi chuyển tiếp vào backend xử lý.
+3. **Logic nghiệp vụ & AI**:
+   - **Lambda Orchestrator** kiểm tra quota người dùng. Tiếp đó, làm tròn tọa độ người dùng để tạo cache key đồng bộ, truy vấn bảng `Cache`. Nếu có cache, trả kết quả ngay. Nếu không, gọi Lambda AI Processor.
+   - **Lambda AI Processor** lấy API key từ Secrets Manager, dựng prompt từ dữ liệu đầu vào đã kiểm tra, gọi mô hình AI và kiểm tra định dạng đầu ra trước khi trả về cho Orchestrator để ghi cache và hiển thị cho người dùng.
+4. **Các gói sử dụng dịch vụ**:
+   - **Free**: Trải nghiệm cơ bản, giới hạn số lượt gợi ý trong ngày.
+   - **Plus**: Hạn mức cao hơn, mở rộng gợi ý hành trình dài ngày và di chuyển xa.
+   - **Pro**: Trải nghiệm cao cấp, AI chỉ được sử dụng dữ liệu từ bảng `Verified Places` đã kiểm chứng để loại bỏ hoàn toàn thông tin ảo tưởng.
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+---
 
-*Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+### 4. Triển khai kỹ thuật
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+#### Các giai đoạn triển khai
+Dự án được triển khai trong vòng 6 tuần (từ Tuần 7 đến Tuần 12) theo lộ trình thực tập:
+- **Giai đoạn 1: Thiết kế và Lập kế hoạch (Tuần 7)**: Viết use-case chi tiết, xác định cấu trúc bảng DynamoDB và thiết kế wireframe trên Google Drawings/Jamboard cho giao diện.
+- **Giai đoạn 2: Thiết lập hạ tầng AWS (Tuần 8)**: Khởi tạo S3, CloudFront, Cognito User Pool và phân quyền IAM theo nguyên tắc đặc quyền tối thiểu.
+- **Giai đoạn 3: Hiện thực hóa Logic Backend & Dữ liệu (Tuần 9)**: Phát triển Lambda Orchestrator (quota, cache), thiết lập Secrets Manager, API Gateway Usage Plans và chuẩn bị bộ dữ liệu địa điểm kiểm chứng.
+- **Giai đoạn 4: Tích hợp Frontend & API (Tuần 10)**: Hoàn thiện giao diện UI động, tích hợp bản đồ, kết nối API đăng nhập và gọi API gợi ý lịch trình.
+- **Giai đoạn 5: Kiểm thử và Tối ưu hóa (Tuần 11)**: Thiết lập CloudWatch Logs/Alarms, chạy thử nghiệm tải (load test), tối ưu cold-start Lambda và pentest kiểm tra bảo mật (WAF, IAM).
+- **Giai đoạn 6: Hoàn thiện và Trình diễn (Tuần 12)**: Kiểm thử đầu cuối lần cuối, quay video demo sản phẩm, viết báo cáo tổng kết và chuẩn bị thuyết trình.
 
-### 7. Đánh giá rủi ro  
-*Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+#### Yêu cầu kỹ thuật
+- **Hạ tầng dưới dạng mã nguồn (IaC)**: Định nghĩa tài nguyên AWS thông qua CDK hoặc Serverless Framework để dễ tái sử dụng.
+- **Ngôn ngữ Backend**: Node.js/TypeScript chạy trên Lambda giúp tối ưu tốc độ và giảm thời gian khởi động (cold start).
+- **Định dạng dữ liệu AI**: Sử dụng các mô hình hỗ trợ đầu ra dạng Structured Outputs (JSON Schema).
+- **Dịch vụ Bản đồ**: Kết hợp Google Maps API hoặc Amazon Location Service để tính khoảng cách và vẽ tuyến đường.
 
-*Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+---
 
-*Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+### 5. Lộ trình & Mốc triển khai
 
-### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+| Tuần | Thành viên | Công việc dự kiến |
+|---|---|---|
+| **Tuần 7** | **Cả nhóm** | Họp kickoff, thống nhất phạm vi 3 gói (Free/Plus/Pro), chốt sơ đồ kiến trúc và tạo Git repo chung, cấp tài khoản IAM. |
+| | Trần Hữu Khang | Viết use-case chi tiết luồng nghiệp vụ & phác thảo DynamoDB schema. |
+| | Lê Trần Anh Đức | Hoàn thiện tài liệu kiến trúc hệ thống và dự thảo chính sách bảo mật IAM. |
+| | Đinh Hoàng Vương | Vẽ wireframe trên Google Drawings/Jamboard cho giao diện lựa chọn lịch trình. |
+| | Trần Phúc Đăng | Nghiên cứu các External AI API và nháp prompt template ban đầu. |
+| **Tuần 8** | **Cả nhóm** | Thống nhất API contract (request/response) giữa Frontend – Backend – AI. |
+| | Trần Hữu Khang | Dựng khung API Gateway và khung Lambda Orchestrator. |
+| | Lê Trần Anh Đức | Cấu hình WAF, CloudFront, S3 hosting frontend và Cognito User Pool. |
+| | Đinh Hoàng Vương | Dựng giao diện tĩnh các bước lựa chọn lịch trình, tích hợp Login Cognito. |
+| | Trần Phúc Đăng | Thiết lập Lambda AI Processor và test gọi LLM qua SDK. |
+| **Tuần 9** | **Cả nhóm** | Đánh giá chéo mã nguồn để đảm bảo sự đồng bộ về dữ liệu đầu ra/đầu vào. |
+| | Trần Hữu Khang | Hoàn thiện logic nghiệp vụ Orchestrator: kiểm tra quota gói, băm cache key tọa độ. |
+| | Lê Trần Anh Đức | Cấu hình Secrets Manager (AI Key) và API Gateway Usage Plans. |
+| | Đinh Hoàng Vương | Kết nối giao diện với API thật, xử lý hiệu ứng tải (loading) và hiển thị lỗi. |
+| | Trần Phúc Đăng | Tối ưu prompt template, xây dựng bảng dữ liệu địa điểm `Verified Places` trên DynamoDB. |
+| **Tuần 10** | **Cả nhóm** | Chạy thử nghiệm tích hợp đầu cuối (end-to-end) từ UI đến kết quả AI và sửa lỗi. |
+| | Trần Hữu Khang | Tối ưu hóa luồng cache hit/miss và tinh chỉnh thời gian TTL theo loại hành trình. |
+| | Lê Trần Anh Đức | Dựng bảng theo dõi CloudWatch Logs/Alarms và cấu hình AWS Budgets cảnh báo chi phí. |
+| | Đinh Hoàng Vương | Vẽ lịch trình chi tiết lên bản đồ trực quan, tối ưu hóa responsive di động. |
+| | Trần Phúc Đăng | Kiểm chứng chất lượng gợi ý từ AI đối với cả 3 gói dịch vụ. |
+| **Tuần 11** | **Cả nhóm** | Họp tổng kết kết quả kiểm thử, rà soát các điểm thắt nút cổ chai (bottlenecks). |
+| | Trần Hữu Khang | Chạy load test, điều chỉnh tài nguyên cấu hình Lambda (Memory/Timeout). |
+| | Lê Trần Anh Đức | Thực hiện pentest cơ bản (WAF bypass, IAM auditing). |
+| | Đinh Hoàng Vương | Tinh chỉnh giao diện hoàn thiện, chuẩn bị kịch bản demo ứng dụng. |
+| | Trần Phúc Đăng | Viết test case toàn diện, chạy kiểm thử unit + integration. |
+| **Tuần 12** | **Cả nhóm** | Chạy thử toàn bộ hệ thống, quay video demo, hoàn thiện tài liệu thuyết trình và nộp bài. |
+
+---
+
+### 6. Ước tính ngân sách
+Với tính chất Serverless, chi phí vận hành hệ thống được tối ưu ở mức cực thấp:
+- **AWS Lambda**: 0.00 USD (Miễn phí 1 triệu request mỗi tháng thuộc AWS Free Tier).
+- **Amazon DynamoDB**: ~0.50 USD/tháng (chạy theo chế độ On-Demand linh hoạt).
+- **Amazon S3 & CloudFront**: ~0.20 USD/tháng cho lưu trữ và truyền tải giao diện web.
+- **Amazon Cognito**: 0.00 USD (Miễn phí cho 50,000 người dùng hoạt động hàng tháng - MAU).
+- **AWS Secrets Manager**: 0.40 USD/tháng (Lưu trữ 1 API Key bí mật cho AI).
+- **AWS WAF**: ~6.00 USD/tháng (Cước nền Web ACL 5 USD và 1 USD cho các quy tắc bảo mật).
+- **Amazon CloudWatch**: ~0.50 USD/tháng cho logs cơ bản và alarms.
+- **External AI API**: Trả tiền theo lượng token tiêu thụ thực tế (sử dụng credit miễn phí ban đầu).
+
+**Tổng chi phí hạ tầng ước tính**: **~7.60 USD / tháng** (chưa bao gồm chi phí token AI), hoàn toàn nằm trong khoản AWS Credit tài trợ của đội nhóm.
+
+---
+
+### 7. Đánh giá rủi ro
+
+#### Ma Trận Rủi Ro
+- **AI Ảo tưởng / Sai dữ liệu**: Ảnh hưởng cao, Xác suất trung bình.
+- **Vượt chi phí API AI**: Ảnh hưởng trung bình, Xác suất cao.
+- **Spam request phá hoại API**: Ảnh hưởng trung bình, Xác suất trung bình.
+- **Rò rỉ API Key nhạy cảm**: Ảnh hưởng nghiêm trọng, Xác suất thấp.
+
+#### Chiến lược giảm thiểu
+- **Hạn chế ảo tưởng**: Ép AI sử dụng dữ liệu từ bảng `Verified Places` đối với gói Pro. Ràng buộc prompt chỉ cho phép sắp xếp và chọn lọc thay vì sáng tạo tự do.
+- **Kiểm soát chi phí AI**: Triển khai cơ chế cache thông minh dựa trên tọa độ vị trí làm tròn. Lưu kết quả cache lên tới 48 tiếng cho chuyến đi dài ngày.
+- **Chống spam**: Bắt buộc xác thực qua Cognito, áp dụng Usage Plans trên API Gateway để rate limit và giới hạn quota cứng tại Lambda Orchestrator.
+- **Bảo vệ khóa bí mật**: Lưu trữ tập trung tại Secrets Manager. Phân quyền IAM truy cập chặt chẽ, tuyệt đối không hardcode API Key vào mã nguồn git.
+
+---
+
+### 8. Kết quả kỳ vọng
+1. **Ứng dụng MVP hoàn chỉnh**: Giao diện trực quan, cho phép người dùng lựa chọn sở thích du lịch và nhận lịch trình tối ưu, chính xác.
+2. **Hạ tầng AWS Serverless tối ưu**: Hệ thống tự động co giãn theo số lượng người dùng, chi phí duy trì tiệm cận 0 USD khi không hoạt động.
+3. **Bộ tài liệu kỹ thuật chuẩn chỉ**: Báo cáo thiết kế API, cấu hình bảo mật, kiểm thử và phân tích chi phí vận hành thực tế.

@@ -1,47 +1,49 @@
 ---
 title: "Sharing and Feedback"
-date: 2024-01-01
+date: 2026-07-10
 weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud Journey program. This will help the FCJ team improve any shortcomings based on the following aspects:
+> Here, I would like to freely share my personal opinions about my experience participating in the First Cloud Journey (FCJ) program. This journey has been a significant milestone in my career development.
 
 ### Overall Evaluation
 
 **1. Working Environment**  
-The working environment is very friendly and open. FCJ members are always willing to help whenever I encounter difficulties, even outside working hours. The workspace is tidy and comfortable, helping me focus better. However, I think it would be nice to have more social gatherings or team bonding activities to strengthen relationships.
+The working environment at FCJ is highly dynamic, innovative, and deeply rooted in tech culture. I was surrounded by passionate peers and experts who were always ready to discuss complex cloud architectures or debug late into the night. The workspace setup fostered deep focus, though organizing a few more casual team-bonding activities could help members from different project groups connect even better.
 
 **2. Support from Mentor / Team Admin**  
-The mentor provides very detailed guidance, explains clearly when I don’t understand, and always encourages me to ask questions. The admin team supports administrative tasks, provides necessary documents, and creates favorable conditions for me to work effectively. I especially appreciate that the mentor allows me to try and solve problems myself instead of just giving the answer.
+The support has been phenomenal. Instead of just giving me the direct solutions to AWS infrastructure problems, my mentors challenged me to think about the "Why" using the AWS Well-Architected Framework. They meticulously reviewed my IAM policies and security configurations for the Wakan project, allowing me to learn through trial and error while ensuring best practices. The admin team was also highly responsive in providing necessary cloud credits and documentation.
 
 **3. Relevance of Work to Academic Major**  
-The tasks I was assigned align well with the knowledge I learned at university, while also introducing me to new areas I had never encountered before. This allowed me to both strengthen my foundational knowledge and gain practical skills.
+The tasks I handled as a Cloud Architect & Security Engineer perfectly aligned with my Cybersecurity major at HUTECH. Implementing AWS WAF, configuring Cognito, and securing APIs with Secrets Manager allowed me to take the theoretical security concepts I learned at university and apply them to a live, scalable enterprise cloud environment.
 
 **4. Learning & Skill Development Opportunities**  
-During the internship, I learned many new skills such as using project management tools, teamwork skills, and professional communication in a corporate environment. The mentor also shared valuable real-world experiences that helped me better plan my career path.
+Beyond technical AWS skills (Serverless, ECS, FinOps), the internship dramatically improved my soft skills. Working closely with Frontend, Backend, and AI engineers on the Wakan project taught me how to communicate complex infrastructure and security constraints effectively to non-infrastructure team members.
 
 **5. Company Culture & Team Spirit**  
-The company culture is very positive: everyone respects each other, works seriously but still keeps things enjoyable. When there are urgent projects, everyone works together and supports one another regardless of their position. This made me feel like a real part of the team, even as an intern.
+The culture emphasizes "learning by doing" and embraces failure as a stepping stone. Whether it was the intense 36-hour hackathons, the Cloud Architect Game Show, or regular project sprints, the spirit of collaboration was always high. I truly felt valued as a core team member rather than just an intern.
 
 **6. Internship Policies / Benefits**  
-The company provides an internship allowance and offers flexible working hours when needed. In addition, having the opportunity to join internal training sessions is a big plus.
+Providing hands-on access to AWS resources, covering exam/lab costs, and hosting high-quality internal workshops (like the AI Community Day) are massive benefits that FCJ provided. The flexible working hours also helped me balance my university thesis requirements with internship responsibilities.
 
 ---
 
 ### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+* **What did you find most satisfying during your internship?**  
+  Successfully designing the Wakan project's architecture from scratch and watching it securely process real data without any security vulnerabilities during our internal pentest phase.
+* **What do you think the company should improve for future interns?**  
+  It would be highly beneficial to organize structured study groups or mentoring sessions specifically targeted at helping interns achieve their AWS Certified Solutions Architect or Security Specialty certifications by the end of the program.
+* **If recommending to a friend, would you suggest they intern here? Why or why not?**  
+  Absolutely. FCJ provides a rare environment where interns are trusted with designing real cloud architectures and making critical security decisions, rather than just doing operational grunt work.
 
 ---
 
 ### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+* **Do you have any suggestions to improve the internship experience?**  
+  I suggest hosting more cross-functional mini-hackathons where engineers swap roles (e.g., Security engineers trying Frontend) to build deeper empathy across development teams.
+* **Would you like to continue this program in the future?**  
+  Yes, I would love to stay involved, either by advancing to a more senior role in upcoming projects or returning as a technical mentor for the next batch of FCJ interns.
+* **Any other comments (free sharing):**  
+  I am incredibly grateful to the FCJA team, my mentors, and my Wakan teammates. This internship bridged the gap between academic theory and industry reality, solidifying my passion for Cloud Security.

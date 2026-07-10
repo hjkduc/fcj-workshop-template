@@ -1,31 +1,22 @@
 ---
-title: "Translated Blogs"
-date: 2024-01-01
+title: "Technical Blogs"
+date: 2026-07-10
 weight: 3
 chapter: false
 pre: " <b> 3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
+This section lists and introduces the technical blogs I have researched, composed, and translated during my learning journey. These articles reflect my hands-on experience in tackling real-world cloud computing challenges.
 
-This section will list and introduce the blogs you have translated. For example:
+### [Blog 1 - Don't let EC2 run overnight: Drastically reduce AWS costs with Spot Instances, Auto Scaling, and Scheduler](3.1-Blog1/)
+This blog explores strategies to optimize cloud costs for development and testing environments. It details how to leverage AWS Spot Instances for up to 90% savings, handle interruptions gracefully by decoupling state, ensure high availability using Auto Scaling Groups with Capacity Rebalancing, and automate resource lifecycles with AWS Instance Scheduler.
 
-###  [Blog 1 - Getting started with healthcare data lakes: Using microservices](3.1-Blog1/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+---
 
-###  [Blog 2 - ...](3.2-Blog2/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+### [Blog 2 - Preventing "forgot to turn off" AWS resources: Budgets, Cost Anomaly Detection, and Tagging](3.2-Blog2/)
+This blog focuses on establishing essential Cost Governance for AWS beginners. It provides a step-by-step guide to setting up automated financial guardrails, including AWS Budgets for forecasted limits, machine learning-powered Cost Anomaly Detection for sudden spikes, and strict Tagging rules for precise cost allocation and resource management.
 
-###  [Blog 3 - ...](3.3-Blog3/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+---
 
-###  [Blog 4 - ...](3.4-Blog4/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 5 - ...](3.5-Blog5/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
-
-###  [Blog 6 - ...](3.6-Blog6/)
-This blog introduces how to start building a data lake in the healthcare sector by applying a microservices architecture. You will learn why data lakes are important for storing and analyzing diverse healthcare data (electronic medical records, lab test data, medical IoT devices…), how microservices help make the system more flexible, scalable, and easier to maintain. The article also guides you through the steps to set up the environment, organize the data processing pipeline, and ensure compliance with security & privacy standards such as HIPAA.
+### [Blog 3 - Designing Stateless applications on AWS: Why you shouldn't store files directly on EC2](3.3-Blog3/)
+This blog delves into cloud-native architectural best practices, specifically the importance of building stateless applications. You will learn how to decouple your architecture by migrating static files to Amazon S3, structured data to Amazon RDS, and system logs to Amazon CloudWatch, enabling seamless horizontal scaling and risk-free Spot Instance adoption.

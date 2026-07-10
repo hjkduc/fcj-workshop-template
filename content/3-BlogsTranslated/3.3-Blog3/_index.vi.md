@@ -1,127 +1,39 @@
 ---
-title: "Blog 3"
-date: 2024-01-01
-weight: 1
+title: "Blog 3: Thiết kế ứng dụng Stateless trên AWS"
+date: 2026-07-10
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Thiết kế ứng dụng Stateless trên AWS: Vì sao không nên lưu file trực tiếp trong EC2?
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+Khi triển khai một ứng dụng Web trên một server EC2, thói quen phổ biến nhất là lưu trữ mọi thứ chung một chỗ: Source code, ảnh user upload trên EBS volume, và database cài trực tiếp lên chính server đó.
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Tuy nhiên, thách thức sẽ xuất hiện khi hệ thống cần mở rộng (Scale-out) hoặc áp dụng EC2 Spot Instance (có thể bị thu hồi bất kỳ lúc nào). Bản chất của EC2 là tài nguyên mang tính tạm thời. Để giải quyết triệt để rủi ro mất mát dữ liệu và sẵn sàng tự động co giãn, ứng dụng cần được thiết kế theo hướng **stateless (phi trạng thái)**: tách file, database và log sang các dịch vụ chuyên biệt.
 
 ---
 
-## Hướng dẫn kiến trúc
+## Những Điểm Nổi Bật Của Giải Pháp
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+### 1. Tách biệt tầng lưu trữ file tĩnh với Amazon S3
+* **Vấn đề:** Khi mở rộng ra nhiều EC2, ảnh upload lên Server A sẽ không tồn tại trên Server B và Server C.
+* **Giải pháp:** Không lưu file upload quan trọng lâu dài trên ổ đĩa EC2. Hãy upload kết quả cuối cùng lên **Amazon S3**.
+* **Kết quả:** Ổ đĩa của EC2 giờ chỉ chứa source code tĩnh. Toàn bộ các máy chủ truy cập chung vào kho lưu trữ S3 tập trung để lấy và hiển thị file.
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+![Sơ đồ kiến trúc ứng dụng Stateless](/images/Blog3.jpg)
 
-**Kiến trúc giải pháp bây giờ như sau:**
+### 2. Độc lập tầng dữ liệu có cấu trúc với Amazon RDS
+* **Vấn đề:** Cài đặt Database chung với Web server sẽ ngốn rất nhiều tài nguyên và rủi ro cao nếu hệ điều hành bị crash.
+* **Giải pháp:** Tách biệt hoàn toàn tầng dữ liệu bằng cách sử dụng **Amazon RDS**.
+* **Kết quả:** EC2 chỉ giữ vai trò xử lý logic (Compute) và truy vấn dữ liệu sang RDS. RDS hỗ trợ automated backup và Multi-AZ tăng khả năng sẵn sàng.
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
-
----
-
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
-
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+### 3. Tập trung hóa dữ liệu Log hệ thống bằng Amazon CloudWatch Logs
+* **Vấn đề:** Lập trình viên thường SSH vào EC2 để đọc log. Nếu server bị Auto Scaling thu hồi, dấu vết log sẽ mất hoàn toàn.
+* **Giải pháp:** Cấu hình **CloudWatch Agent** để đẩy log ứng dụng và hệ thống về CloudWatch Logs gần thời gian thực.
+* **Kết quả:** Kể cả khi EC2 bị khai tử, toàn bộ lịch sử hoạt động vẫn được lưu trữ an toàn, độc lập trên Cloud để phân tích.
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
-
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
-
----
-
-## The pub/sub hub
-
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
-
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
-
----
-
-## Core microservice
-
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
-
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
-
----
-
-## Front door microservice
-
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
-
----
-
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
-
----
-
-## Tính năng mới trong giải pháp
-
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+## Kết Luận
+Sự bền bỉ của kiến trúc không nằm ở việc cố giữ cho một con EC2 sống mãi, mà nằm ở khả năng **Tách biệt hoàn toàn các phân lớp dữ liệu (Decoupling Architecture)**. Khi ứng dụng đã đạt trạng thái Stateless, bạn có thể tự tin bật Auto Scaling Group hoặc dùng Spot Instance để tiết kiệm chi phí mà không còn sợ hãi việc mất dữ liệu.

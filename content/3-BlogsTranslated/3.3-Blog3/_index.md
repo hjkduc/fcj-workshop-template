@@ -1,126 +1,39 @@
 ---
-title: "Blog 3"
-date: 2024-01-01
-weight: 1
+title: "Blog 3: Designing Stateless applications on AWS"
+date: 2026-07-10
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Designing Stateless applications on AWS: Why you shouldn't store files directly on EC2
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+When deploying web applications on an EC2 server, a common habit is to store everything in one place: the source code, user-uploaded images on the EBS/root volume, and the database directly on the server.
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+However, real challenges emerge when your system needs to scale out to handle higher traffic, or when applying cost-optimization strategies like EC2 Spot Instances (which can be reclaimed at any time). EC2 is intrinsically ephemeral in modern cloud architecture. To solve the risk of data loss and prepare for Auto Scaling, the web/app tier must be designed to be **stateless**: moving files, databases, and logs to specialized decoupled services.
 
 ---
 
-## Architecture Guidance
+## Solution Highlights
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+### 1. Decouple Static File Storage with Amazon S3
+* **The Problem:** If the application scales out to multiple EC2 servers, an image uploaded to Server A won't be available on Server B or C.
+* **The Solution:** Never store critical uploaded files long-term on EC2 disks. Upload the final results directly to **Amazon S3**.
+* **The Result:** The EC2 disk now only contains static source code. All servers access a centralized S3 repository to fetch and display files seamlessly.
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+![Stateless Architecture Diagram](/images/Blog3.jpg)
 
-**The solution architecture is now as follows:**
+### 2. Isolate Structured Data with Amazon RDS
+* **The Problem:** Installing a database (MySQL, PostgreSQL) alongside the web server consumes massive RAM/CPU resources and poses extreme risks if the OS crashes.
+* **The Solution:** Fully decouple the data tier using the specialized managed database service, **Amazon RDS**.
+* **The Result:** EC2 handles only compute logic and queries RDS via a connection string. RDS supports automated backups, maintenance windows, and Multi-AZ for high availability.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
-
----
-
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
-
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+### 3. Centralize System Logs with Amazon CloudWatch Logs
+* **The Problem:** When an app errors out, developers traditionally SSH into EC2 to read log files. If that server was just terminated by Auto Scaling, all log traces are permanently lost.
+* **The Solution:** Configure the **CloudWatch Agent** to push application and system logs to CloudWatch Logs in near real-time.
+* **The Result:** Even if EC2 servers are continuously destroyed or replaced, the entire operational history is securely stored on the cloud for analysis at any time.
 
 ---
 
-## Technology Choices and Communication Scope
-
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
-
----
-
-## The Pub/Sub Hub
-
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
-
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
-
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
-
----
-
-## New Features in the Solution
-
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+## Conclusion
+A server can crash or be replaced at any time without causing system downtime. Architectural resilience relies on the **Decoupling Architecture** of data layers. Once your application reaches a Stateless condition, you can confidently utilize Auto Scaling Groups and Spot Instances to save costs without fearing data loss.

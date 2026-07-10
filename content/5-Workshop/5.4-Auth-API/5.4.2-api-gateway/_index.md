@@ -75,9 +75,6 @@ If you prefer the public path to be `/api/itinerary` **on CloudFront only**, kee
 
 6. Method Response → add `200` with response body model `Empty` or application/json
 
-<!-- TODO: screenshot - resource /itinerary + POST method + authorizer attached -->
-![POST /itinerary method](/images/5-Workshop/5.4-Auth-API/apigw-method.png)
-
 #### Step 4 — Enable CORS (if calling API domain directly)
 
 If the browser ever calls the **API Gateway URL** directly (not only via CloudFront same origin), enable CORS:
@@ -86,9 +83,6 @@ If the browser ever calls the **API Gateway URL** directly (not only via CloudFr
 2. Allow methods: `POST, OPTIONS`
 3. Allow headers: `Authorization, Content-Type`
 4. Allow origin: your CloudFront origin `https://dxxxx.cloudfront.net` (or `*` for lab only)
-
-<!-- TODO: screenshot - Enable CORS -->
-![Enable CORS](/images/5-Workshop/5.4-Auth-API/apigw-cors.png)
 
 {{% notice tip %}}
 When frontend and API are both served from the **same CloudFront domain**, browser same-origin applies and CORS is less critical. Still useful for local frontend testing.
@@ -100,9 +94,6 @@ When frontend and API are both served from the **same CloudFront domain**, brows
 2. **Stage name:** `prod` (or `dev`)
 3. Note the **Invoke URL**, e.g.  
    `https://xxxxxxxxxx.execute-api.ap-southeast-1.amazonaws.com/prod`
-
-<!-- TODO: screenshot - stage prod + Invoke URL -->
-![API deployed](/images/5-Workshop/5.4-Auth-API/apigw-deploy.png)
 
 #### Step 6 — Test with curl
 
@@ -126,9 +117,6 @@ curl -i -X POST \
   -H "Authorization: $TOKEN" \
   -d '{"budget":"low","days":1,"companions":"solo"}'
 ```
-
-<!-- TODO: screenshot - terminal 401 without token + 200 with token -->
-![curl auth test](/images/5-Workshop/5.4-Auth-API/apigw-curl-test.png)
 
 #### What you will change in Step 5.6
 
