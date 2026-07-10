@@ -33,3 +33,4 @@ Thể thức thi đấu loại trực tiếp khiến không khí luôn căng th�
 ### Hình ảnh Sự kiện
 
 ![Hình ảnh Gameshow](/images/Event3-1.png)
+![Hình ảnh Gameshow](/images/Event3-2.jpg)

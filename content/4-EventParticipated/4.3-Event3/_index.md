@@ -34,3 +34,4 @@ This event was a brilliant way to relieve stress while reinforcing the heavy arc
 ### Event Photos
 
 ![Cloud Architect Game Show Photo](/images/Event3-1.png)
+![Cloud Architect Game Show Photo](/images/Event3-2.jpg)
