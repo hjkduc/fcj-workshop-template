@@ -32,3 +32,4 @@ Sau khi hoàn thành workshop, bạn sẽ có luồng end-to-end: đăng nhập 
 6. [Xử lý nghiệp vụ với Lambda](5.6-Business-logic/)
 7. [Bảo mật, giám sát & tối ưu chi phí](5.7-Security-monitoring/)
 8. [Dọn dẹp tài nguyên](5.8-Cleanup/)
+9. [Demo](5.9-demo)

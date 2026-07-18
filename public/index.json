@@ -270,7 +270,7 @@
 	"title": "Workshop",
 	"tags": [],
 	"description": "",
-	"content": "Wakan – AI-Powered Personalized Travel Assistant Overview Wakan is a serverless web application that generates personalized travel itineraries for Vietnam. Instead of free-form AI prompts, users select structured options on the UI (companions, budget, trip length, experience type, transport, nearby/far destinations). The backend validates every request, checks the user\u0026rsquo;s subscription quota, serves cached results when possible, and only then calls an AI model through a dedicated processor.\nThis workshop walks you through building the core AWS architecture of Wakan:\nEdge \u0026amp; frontend: Amazon S3 + Amazon CloudFront (+ optional AWS WAF) Auth \u0026amp; API: Amazon Cognito + Amazon API Gateway Business logic: AWS Lambda functions AI Processor Data: Amazon DynamoDB (Users/Subscriptions, Cache, Verified Places) Security \u0026amp; cost control: AWS Secrets Manager, least-privilege IAM, Amazon CloudWatch, AWS Budgets By the end of this workshop, you will have a working end-to-end flow: sign in → select trip preferences → receive a structured itinerary, with quota and cache applied according to Free / Plus / Pro plans.\nContent Workshop overview Prerequisites Frontend \u0026amp; edge distribution Authentication \u0026amp; API layer Data layer with DynamoDB Business logic with Lambda Security, monitoring \u0026amp; cost control Clean up "
+	"content": "Wakan – AI-Powered Personalized Travel Assistant Overview Wakan is a serverless web application that generates personalized travel itineraries for Vietnam. Instead of free-form AI prompts, users select structured options on the UI (companions, budget, trip length, experience type, transport, nearby/far destinations). The backend validates every request, checks the user\u0026rsquo;s subscription quota, serves cached results when possible, and only then calls an AI model through a dedicated processor.\nThis workshop walks you through building the core AWS architecture of Wakan:\nEdge \u0026amp; frontend: Amazon S3 + Amazon CloudFront (+ optional AWS WAF) Auth \u0026amp; API: Amazon Cognito + Amazon API Gateway Business logic: AWS Lambda functions AI Processor Data: Amazon DynamoDB (Users/Subscriptions, Cache, Verified Places) Security \u0026amp; cost control: AWS Secrets Manager, least-privilege IAM, Amazon CloudWatch, AWS Budgets By the end of this workshop, you will have a working end-to-end flow: sign in → select trip preferences → receive a structured itinerary, with quota and cache applied according to Free / Plus / Pro plans.\nContent Workshop overview Prerequisites Frontend \u0026amp; edge distribution Authentication \u0026amp; API layer Data layer with DynamoDB Business logic with Lambda Security, monitoring \u0026amp; cost control Clean up Demo "
 },
 {
 	"uri": "//localhost:1313/6-self-evaluation/",
@@ -329,6 +329,13 @@
 	"content": "Goal Delete all Wakan workshop resources in a safe order so you stop ongoing charges and avoid dependency errors (e.g. deleting a bucket that CloudFront still uses).\nCleanup is irreversible. Export any screenshots, logs, or sample data you need for your report before deleting resources.\nRecommended delete order 1. CloudFront (disable → delete distribution; remove WAF association) 2. WAF (Web ACL) 3. API Gateway (API + usage plans + API keys) 4. Lambda ( AI Processor) 5. Cognito (User pool + domain) 6. DynamoDB (tables) 7. Secrets Manager 8. S3 (empty bucket → delete) 9. IAM roles \u0026amp; CloudWatch artifacts (alarms, dashboard, log groups) 10. AWS Budgets (optional) Content Delete edge \u0026amp; API resources Delete compute, data \u0026amp; secrets Delete IAM, monitoring \u0026amp; final check "
 },
 {
+	"uri": "//localhost:1313/5-workshop/5.9-demo/",
+	"title": "Demo",
+	"tags": [],
+	"description": "",
+	"content": " Link Demo: https://www.wakan.id.vn\nLink Video Demo:\n"
+},
+{
 	"uri": "//localhost:1313/1-worklog/1.9-week9/",
 	"title": "Week 9 Worklog",
 	"tags": [],
@@ -355,13 +362,6 @@
 	"tags": [],
 	"description": "",
 	"content": "Week 12 Objectives: Finalize the Wakan product, record demos, and submit final reports. Prepare presentation materials focusing on Cloud Architecture and Security. Handle technical Q\u0026amp;A regarding AWS infrastructure. Tasks completed this week: Day Task Start Date Completion Date Status 2 - Full system demo run with the team 06/07/2026 06/07/2026 Completed 3 - Record official product demo video 07/07/2026 07/07/2026 Completed 4 - Prepare Architecture \u0026amp; Security presentation slides 08/07/2026 08/07/2026 Completed 5 - Presentation rehearsal and Q\u0026amp;A prep for AWS infrastructure 09/07/2026 09/07/2026 Completed 6 - Submit final project 10/07/2026 10/07/2026 Completed Week 12 Achievements: Successful Delivery: Delivered a highly scalable, secure, and fully functional cloud architecture for the Wakan project. "
-},
-{
-	"uri": "//localhost:1313/5-workshop/5.9-demo/",
-	"title": "5.9. Demo",
-	"tags": [],
-	"description": "",
-	"content": " Link Demo: https://www.wakan.id.vn\nLink Video Demo:\n"
 },
 {
 	"uri": "//localhost:1313/categories/",

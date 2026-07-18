@@ -1,5 +1,12 @@
 [
 {
+	"uri": "//localhost:1313/vi/5-workshop/5.9-demo/",
+	"title": "DEMO",
+	"tags": [],
+	"description": "",
+	"content": " Link Demo: https://www.wakan.id.vn\nLink Video Demo:\n"
+},
+{
 	"uri": "//localhost:1313/vi/3-blogstranslated/3.1-blog1/",
 	"title": "Blog 1: Đừng để EC2 chạy xuyên đêm: Giảm mạnh chi phí AWS",
 	"tags": [],
@@ -270,7 +277,7 @@
 	"title": "Workshop",
 	"tags": [],
 	"description": "",
-	"content": "Wakan – Trợ lý du lịch cá nhân hóa bằng AI Tổng quan Wakan là ứng dụng web serverless gợi ý lịch trình du lịch tại Việt Nam. Thay vì để người dùng nhập prompt tự do, hệ thống cung cấp các lựa chọn có cấu trúc trên giao diện (đối tượng đi cùng, ngân sách, số ngày, loại trải nghiệm, phương tiện, đi gần/xa). Backend sẽ validate request, kiểm tra quota theo gói dịch vụ, ưu tiên trả kết quả từ cache nếu có, và chỉ gọi AI khi thật sự cần thiết thông qua một Lambda xử lý riêng.\nWorkshop này hướng dẫn bạn dựng kiến trúc AWS cốt lõi của Wakan:\nBiên \u0026amp; frontend: Amazon S3 + Amazon CloudFront (+ tùy chọn AWS WAF) Xác thực \u0026amp; API: Amazon Cognito + Amazon API Gateway Xử lý nghiệp vụ: AWS Lambda AI Processor Dữ liệu: Amazon DynamoDB (Users/Subscriptions, Cache, Verified Places) Bảo mật \u0026amp; kiểm soát chi phí: AWS Secrets Manager, IAM least privilege, Amazon CloudWatch, AWS Budgets Sau khi hoàn thành workshop, bạn sẽ có luồng end-to-end: đăng nhập → chọn tùy chọn chuyến đi → nhận lịch trình có cấu trúc, kèm kiểm soát quota và cache theo gói Free / Plus / Pro.\nNội dung Tổng quan workshop Chuẩn bị Frontend \u0026amp; phân phối biên Xác thực \u0026amp; lớp API Lớp dữ liệu với DynamoDB Xử lý nghiệp vụ với Lambda Bảo mật, giám sát \u0026amp; tối ưu chi phí Dọn dẹp tài nguyên "
+	"content": "Wakan – Trợ lý du lịch cá nhân hóa bằng AI Tổng quan Wakan là ứng dụng web serverless gợi ý lịch trình du lịch tại Việt Nam. Thay vì để người dùng nhập prompt tự do, hệ thống cung cấp các lựa chọn có cấu trúc trên giao diện (đối tượng đi cùng, ngân sách, số ngày, loại trải nghiệm, phương tiện, đi gần/xa). Backend sẽ validate request, kiểm tra quota theo gói dịch vụ, ưu tiên trả kết quả từ cache nếu có, và chỉ gọi AI khi thật sự cần thiết thông qua một Lambda xử lý riêng.\nWorkshop này hướng dẫn bạn dựng kiến trúc AWS cốt lõi của Wakan:\nBiên \u0026amp; frontend: Amazon S3 + Amazon CloudFront (+ tùy chọn AWS WAF) Xác thực \u0026amp; API: Amazon Cognito + Amazon API Gateway Xử lý nghiệp vụ: AWS Lambda AI Processor Dữ liệu: Amazon DynamoDB (Users/Subscriptions, Cache, Verified Places) Bảo mật \u0026amp; kiểm soát chi phí: AWS Secrets Manager, IAM least privilege, Amazon CloudWatch, AWS Budgets Sau khi hoàn thành workshop, bạn sẽ có luồng end-to-end: đăng nhập → chọn tùy chọn chuyến đi → nhận lịch trình có cấu trúc, kèm kiểm soát quota và cache theo gói Free / Plus / Pro.\nNội dung Tổng quan workshop Chuẩn bị Frontend \u0026amp; phân phối biên Xác thực \u0026amp; lớp API Lớp dữ liệu với DynamoDB Xử lý nghiệp vụ với Lambda Bảo mật, giám sát \u0026amp; tối ưu chi phí Dọn dẹp tài nguyên Demo "
 },
 {
 	"uri": "//localhost:1313/vi/6-self-evaluation/",
@@ -355,13 +362,6 @@
 	"tags": [],
 	"description": "",
 	"content": "Mục tiêu tuần 12: Chốt bản hoàn thiện sản phẩm Wakan, quay video demo và nộp bài. Chuẩn bị tài liệu thuyết trình mảng Kiến trúc đám mây và Bảo mật. Bảo vệ dự án và phụ trách giải đáp (Q\u0026amp;A) về hạ tầng AWS. Các công việc đã hoàn thành: Thứ Công việc Ngày bắt đầu Ngày hoàn thành Trạng thái 2 - Chạy full demo thử nghiệm cùng toàn đội 06/07/2026 06/07/2026 Hoàn thành 3 - Quay video demo sản phẩm chính thức 07/07/2026 07/07/2026 Hoàn thành 4 - Soạn thảo slide trình bày Kiến trúc \u0026amp; Bảo mật 08/07/2026 08/07/2026 Hoàn thành 5 - Rehearsal thuyết trình và chuẩn bị kịch bản Q\u0026amp;A hạ tầng 09/07/2026 09/07/2026 Hoàn thành 6 - Nộp bài 10/07/2026 10/07/2026 Hoàn thành Kết quả đạt được: Về đích thành công: Hoàn thiện và bàn giao một kiến trúc AWS bảo mật, tối ưu và mở rộng tốt cho dự án Wakan. "
-},
-{
-	"uri": "//localhost:1313/vi/5-workshop/5.9-demo/",
-	"title": "5.9 Demo",
-	"tags": [],
-	"description": "",
-	"content": " Link Demo: https://www.wakan.id.vn\nLink Video Demo:\n"
 },
 {
 	"uri": "//localhost:1313/vi/categories/",
