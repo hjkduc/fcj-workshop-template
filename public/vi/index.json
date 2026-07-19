@@ -1,12 +1,5 @@
 [
 {
-	"uri": "//localhost:1313/vi/5-workshop/5.9-demo/",
-	"title": "DEMO",
-	"tags": [],
-	"description": "",
-	"content": " Link Demo: https://www.wakan.id.vn\nLink Video Demo:\n"
-},
-{
 	"uri": "//localhost:1313/vi/3-blogstranslated/3.1-blog1/",
 	"title": "Blog 1: Đừng để EC2 chạy xuyên đêm: Giảm mạnh chi phí AWS",
 	"tags": [],
@@ -334,6 +327,13 @@
 	"tags": [],
 	"description": "",
 	"content": "Mục tiêu Xóa toàn bộ tài nguyên workshop Wakan theo thứ tự an toàn để dừng chi phí và tránh lỗi phụ thuộc (ví dụ xóa bucket khi CloudFront vẫn đang dùng).\nDọn dẹp không hoàn tác được. Hãy export screenshot, log hoặc dữ liệu mẫu cần cho báo cáo trước khi xóa.\nThứ tự xóa khuyến nghị 1. CloudFront (disable → xóa distribution; gỡ association WAF) 2. WAF (Web ACL) 3. API Gateway (API + usage plans + API keys) 4. Lambda ( AI Processor) 5. Cognito (User pool + domain) 6. DynamoDB (các bảng) 7. Secrets Manager 8. S3 (xóa hết object → xóa bucket) 9. IAM roles \u0026amp; CloudWatch (alarms, dashboard, log groups) 10. AWS Budgets (tùy chọn) Nội dung Xóa tài nguyên biên \u0026amp; API Xóa compute, dữ liệu \u0026amp; secrets Xóa IAM, giám sát \u0026amp; kiểm tra cuối "
+},
+{
+	"uri": "//localhost:1313/vi/5-workshop/5.9-demo/",
+	"title": "Demo",
+	"tags": [],
+	"description": "",
+	"content": " Link Demo: https://www.wakan.id.vn\nLink Video Demo: https://drive.google.com/drive/folders/1ALvE0fBSoipAOVucz_GqT2fMD38OcV_j?usp=drive_link\n"
 },
 {
 	"uri": "//localhost:1313/vi/1-worklog/1.9-week9/",
