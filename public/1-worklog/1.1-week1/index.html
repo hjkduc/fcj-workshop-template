@@ -15,21 +15,21 @@
     <title>Week 1 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784554210" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784554210" rel="stylesheet">
+    <link href="/css/hybrid.css?1784554210" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784554210" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784554210" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784554210" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784554210" rel="stylesheet">
+    <link href="/css/theme.css?1784554210" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784554210" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784554210" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784554210"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784554210"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784554210"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784554210"></script>
  
   </div>
 
@@ -1214,8 +1214,8 @@
 
 	<h3 id="week-1-objectives">Week 1 Objectives:</h3>
 <ul>
-<li>Master AWS foundational services including Compute, Storage, and Networking.</li>
-<li>Learn to manage access with IAM and basic cost management tools.</li>
+<li>Master AWS foundational services including Compute (EC2, Lightsail), Storage (S3), Database (RDS), and Networking (VPC, Route 53).</li>
+<li>Learn to manage access security with IAM, system health with CloudWatch, and cost governance with AWS Budgets.</li>
 </ul>
 <h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
@@ -1231,46 +1231,75 @@
   <tbody>
       <tr>
           <td>2</td>
-          <td>- AWS Console, CLI configuration <br> - Access management with AWS IAM</td>
+          <td><strong>Topic: AWS Console, CLI Configuration &amp; Access Management (IAM)</strong><br>- <strong>Knowledge:</strong><br>  + Differentiate Authentication vs Authorization in AWS.<br>  + IAM Core Components: Users, Groups, Roles, and JSON-based IAM Policies (Principle of Least Privilege).<br>  + AWS CLI &amp; Programmatic Access (Access Key ID &amp; Secret Access Key).<br>- <strong>Practice:</strong><br>  + Configure AWS CLI on local workstation (<code>aws configure</code>).<br>  + Create an IAM User, assign MFA security, and set up an IAM Group with specific policy access.</td>
           <td>20/04/2026</td>
           <td>20/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Basic networking with Amazon VPC <br> - Virtual servers with Amazon EC2 &amp; Auto Scaling</td>
+          <td><strong>Topic: Basic Networking with Amazon VPC &amp; Compute with EC2 / Auto Scaling</strong><br>- <strong>Knowledge:</strong><br>  + Amazon VPC architecture: Subnets (Public vs Private), Internet Gateway (IGW), Route Tables, Security Groups (Stateful) vs NACLs (Stateless).<br>  + Amazon EC2 fundamentals: Instance types, AMIs, Key Pairs, EBS storage.<br>  + High Availability concepts: Elastic Load Balancing (ELB) &amp; Auto Scaling Groups (ASG).<br>- <strong>Practice:</strong><br>  + Build a custom VPC with Public/Private subnets, IGW, and Route Tables.<br>  + Launch an EC2 instance in the public subnet and SSH into it via terminal.</td>
           <td>21/04/2026</td>
           <td>21/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Hosting and storage with Amazon S3 <br> - Relational databases with Amazon RDS</td>
+          <td><strong>Topic: Storage with Amazon S3 &amp; Relational Databases with Amazon RDS</strong><br>- <strong>Knowledge:</strong><br>  + Amazon S3: Object storage, Buckets, Storage Classes, Bucket Policies, Static Website Hosting.<br>  + Amazon RDS: Managed relational databases (MySQL/PostgreSQL), Multi-AZ deployments, Automated Backups vs DB Snapshots.<br>- <strong>Practice:</strong><br>  + Create an S3 Bucket, configure Bucket Policy for public read access, and host a static HTML website.<br>  + Provision an Amazon RDS MySQL database and connect to it from an EC2 instance.</td>
           <td>22/04/2026</td>
           <td>22/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Simplifying compute with Amazon Lightsail <br> - System monitoring with CloudWatch</td>
+          <td><strong>Topic: Simplifying Compute with Amazon Lightsail &amp; System Monitoring with CloudWatch</strong><br>- <strong>Knowledge:</strong><br>  + Amazon Lightsail: Simplified Virtual Private Server (VPS) solution for lightweight workloads.<br>  + Amazon CloudWatch: Metrics, CloudWatch Logs, Alarms, and Dashboards.<br>- <strong>Practice:</strong><br>  + Deploy a WordPress instance on Amazon Lightsail with a Static IP.<br>  + Set up a CloudWatch Alarm monitoring EC2 CPU Utilization (&gt;80%) with SNS email notifications.</td>
           <td>23/04/2026</td>
           <td>23/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Hybrid DNS with Amazon Route 53 <br> - Cost management with AWS Budgets</td>
+          <td><strong>Topic: Hybrid DNS with Amazon Route 53 &amp; Cost Management with AWS Budgets</strong><br>- <strong>Knowledge:</strong><br>  + Amazon Route 53: Domain Name System (DNS), Public vs Private Hosted Zones, Routing Policies (Simple, Weighted, Failover).<br>  + AWS Cost Governance: AWS Budgets, Cost Allocation Tags, Billing Dashboard.<br>- <strong>Practice:</strong><br>  + Create a Hosted Zone in Route 53 and map A/CNAME records to an S3/EC2 web endpoint.<br>  + Configure an AWS Budget with email alerts when forecasted costs exceed 80% of the threshold.</td>
           <td>24/04/2026</td>
           <td>24/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-1-achievements">Week 1 Achievements:</h3>
+<h4 id="monday-20042026">Monday (20/04/2026):</h4>
 <ul>
-<li><strong>Core Infrastructure:</strong> Successfully configured isolated networks (VPC) and deployed scalable virtual servers (EC2).</li>
-<li><strong>Storage &amp; Databases:</strong> Mastered S3 for static hosting and understood managed relational databases (RDS).</li>
-<li><strong>Management:</strong> Established secure access via IAM, set up cost alerts, and configured basic system monitoring using CloudWatch.</li>
+<li>Understood core identity management principles in AWS IAM (Users, Groups, Roles, Policies).</li>
+<li>Mastered security best practices by enabling Multi-Factor Authentication (MFA) for Root and IAM accounts.</li>
+<li>Installed and configured AWS CLI on the local machine using Access Keys for programmatic management.</li>
+</ul>
+<h4 id="tuesday-21042026">Tuesday (21/04/2026):</h4>
+<ul>
+<li>Acquired a deep understanding of cloud networking architecture in Amazon VPC (Subnets, IGW, Route Tables, Security Groups).</li>
+<li>Successfully created a custom VPC topology with isolated network layers.</li>
+<li>Provisioned Amazon EC2 instances, attached EBS volumes, and established SSH connectivity via Key Pairs.</li>
+<li>Understood how EC2 Auto Scaling and Elastic Load Balancing ensure application resilience.</li>
+</ul>
+<h4 id="wednesday-22042026">Wednesday (22/04/2026):</h4>
+<ul>
+<li>Mastered Amazon S3 object storage mechanics, bucket security policies, and lifecycle rules.</li>
+<li>Successfully deployed a static web application hosted on Amazon S3.</li>
+<li>Provisioned a managed relational database using Amazon RDS (MySQL) with Multi-AZ considerations.</li>
+<li>Configured Security Group rules to allow secure database access from application instances.</li>
+</ul>
+<h4 id="thursday-23042026">Thursday (23/04/2026):</h4>
+<ul>
+<li>Learned the differences between Amazon EC2 and Amazon Lightsail for rapid application deployment.</li>
+<li>Successfully launched a full-stack WordPress site using Amazon Lightsail in minutes.</li>
+<li>Understood system observability with Amazon CloudWatch (Metrics, Logs, and Alarms).</li>
+<li>Configured automated CloudWatch Alarms and Amazon SNS email alerts to detect abnormal CPU utilization.</li>
+</ul>
+<h4 id="friday-24042026">Friday (24/04/2026):</h4>
+<ul>
+<li>Mastered DNS management with Amazon Route 53, hosted zones, and domain routing strategies.</li>
+<li>Mapped domain records (A/CNAME) to cloud endpoints in Route 53.</li>
+<li>Implemented financial guardrails by setting up cost alerts in AWS Budgets to prevent unexpected charges.</li>
 </ul>
 
 
@@ -2170,19 +2199,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784554210"></script>
+    <script src="/js/jquery.sticky.js?1784554210"></script>
+    <script src="/js/featherlight.min.js?1784554210"></script>
+    <script src="/js/highlight.pack.js?1784554210"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784554210"></script>
+    <script src="/js/learn.js?1784554210"></script>
+    <script src="/js/hugo-learn.js?1784554210"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784554210" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784554210"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

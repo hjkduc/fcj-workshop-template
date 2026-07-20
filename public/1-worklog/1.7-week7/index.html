@@ -15,21 +15,21 @@
     <title>Week 7 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784553658" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784553658" rel="stylesheet">
+    <link href="/css/hybrid.css?1784553658" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784553658" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784553658" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784553658" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784553658" rel="stylesheet">
+    <link href="/css/theme.css?1784553658" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784553658" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784553658" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784553658"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784553658"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784553658"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784553658"></script>
  
   </div>
 
@@ -1184,7 +1184,7 @@
     <li>
       <ul>
         <li><a href="#week-7-objectives">Week 7 Objectives:</a></li>
-        <li><a href="#tasks-completed-this-week">Tasks completed this week:</a></li>
+        <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
         <li><a href="#week-7-achievements">Week 7 Achievements:</a></li>
       </ul>
     </li>
@@ -1214,10 +1214,11 @@
 
 	<h3 id="week-7-objectives">Week 7 Objectives:</h3>
 <ul>
-<li>Define project scope, finalize architecture, and establish a collaborative environment for the Wakan project.</li>
-<li>Draft the security and architecture review based on the AWS Well-Architected Framework.</li>
+<li>Kick off the real-world capstone project <strong>Wakan (Personalized AI Travel Assistant)</strong>, defining product scope and service tiering (Free/Plus/Pro).</li>
+<li>Design the complete Cloud-Native Serverless system architecture and establish collaborative Git repositories and AWS IAM developer environments.</li>
+<li>Perform a preliminary security review and architecture evaluation against the six pillars of the AWS Well-Architected Framework.</li>
 </ul>
-<h3 id="tasks-completed-this-week">Tasks completed this week:</h3>
+<h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
   <thead>
       <tr>
@@ -1225,51 +1226,78 @@
           <th>Task</th>
           <th>Start Date</th>
           <th>Completion Date</th>
-          <th>Status</th>
+          <th>Reference Material</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Project Kickoff: Finalize 3-tier features (Free/Plus/Pro) <br> - Setup Git repo and AWS IAM users for team members</td>
+          <td><strong>Topic: Project Kickoff, Feature Scope Definition &amp; Environment Setup</strong><br>- <strong>Knowledge:</strong><br>  + Product Requirements Document (PRD) creation for Wakan AI Travel Assistant.<br>  + Feature tiering strategy (Free vs Plus vs Pro tiers for itinerary generation limits and AI API quotas).<br>  + Team workspace security and version control repository structuring.<br>- <strong>Practice:</strong><br>  + Finalize Wakan PRD and feature breakdown.<br>  + Initialize team GitHub repository and create dedicated individual IAM Users with MFA enforcement for team members.</td>
           <td>01/06/2026</td>
           <td>01/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Finalize system architecture diagrams</td>
+          <td><strong>Topic: Wakan Cloud Architecture Design (Serverless &amp; Microservices)</strong><br>- <strong>Knowledge:</strong><br>  + Decoupled Serverless Topology: Frontend delivery (S3 + CloudFront + OAC), API tier (API Gateway + Cognito), Async compute (Lambda + SQS + Step Functions), and Data tier (DynamoDB).<br>  + Security Perimeter: AWS WAF Web ACLs, Origin Cloaking, and VPC Isolation.<br>- <strong>Practice:</strong><br>  + Draft and finalize the high-level AWS system architecture diagram using Draw.io / Lucidchart.<br>  + Define REST API endpoints, request/response schemas, and DynamoDB data access patterns.</td>
           <td>02/06/2026</td>
           <td>02/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Draft AWS Well-Architected Framework review</td>
+          <td><strong>Topic: AWS Well-Architected Framework Review &amp; Security Baseline</strong><br>- <strong>Knowledge:</strong><br>  + The 6 Pillars: Security, Operational Excellence, Reliability, Performance Efficiency, Cost Optimization, and Sustainability.<br>  + Security Pillar Deep Dive: Least privilege access, data encryption at rest/in transit, edge protection.<br>- <strong>Practice:</strong><br>  + Conduct the AWS Well-Architected Tool assessment for the proposed Wakan architecture.<br>  + Identify high-risk issues (HRI) and draft a mitigation roadmap for authentication and API endpoints.</td>
           <td>03/06/2026</td>
           <td>03/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Setup initial IAM Roles and Policies</td>
+          <td><strong>Topic: Identity and Access Management (IAM) Roles &amp; Security Guardrails</strong><br>- <strong>Knowledge:</strong><br>  + IAM Policy Syntax: Effect, Action, Resource, Conditions.<br>  + Cross-service IAM Execution Roles (Lambda execution roles, API Gateway logging roles).<br>  + Least-Privilege enforcement and Permission Boundaries.<br>- <strong>Practice:</strong><br>  + Draft JSON IAM execution policies for Lambda workers with minimal DynamoDB and Secrets Manager permissions.<br>  + Configure AWS Secrets Manager secret structures for external AI API key management.</td>
           <td>04/06/2026</td>
           <td>04/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Team sync and architecture sign-off</td>
+          <td><strong>Topic: Team Sync, Architecture Review with Mentors &amp; Baseline Sign-off</strong><br>- <strong>Knowledge:</strong><br>  + Technical presentation skills and architectural decision record (ADR) documentation.<br>  + Feedback integration from Senior Cloud Architects.<br>- <strong>Practice:</strong><br>  + Present the Wakan architecture proposal and Well-Architected assessment to AWS Mentors.<br>  + Incorporate mentor feedback regarding asynchronous processing and get formal architecture sign-off.</td>
           <td>05/06/2026</td>
           <td>05/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-7-achievements">Week 7 Achievements:</h3>
+<h4 id="monday-01062026">Monday (01/06/2026):</h4>
 <ul>
-<li><strong>Architecture Design:</strong> Successfully finalized the complete AWS architecture diagram for Wakan.</li>
-<li><strong>Security &amp; Governance:</strong> Drafted the Well-Architected review and established a secure foundation by setting up the initial IAM structure and individual IAM users for the team.</li>
+<li>Successfully kicked off project <strong>Wakan (Personalized AI Travel Assistant)</strong>, defining the core product scope and feature tiering (Free, Plus, Pro).</li>
+<li>Established team version control structure on GitHub with branch protection rules.</li>
+<li>Provisioned individual IAM Users with MFA enforcement and initial permission boundaries for all team members.</li>
+</ul>
+<h4 id="tuesday-02062026">Tuesday (02/06/2026):</h4>
+<ul>
+<li>Designed and finalized the complete AWS Serverless architecture diagram for Wakan, featuring CloudFront, S3, API Gateway, Cognito, Lambda, DynamoDB, and WAF.</li>
+<li>Defined RESTful API contracts and data models for itinerary generation, user profiles, and caching.</li>
+<li>Mapped data flow connections between API Gateway, Cognito authorizers, and backend Lambda workers.</li>
+</ul>
+<h4 id="wednesday-03062026">Wednesday (03/06/2026):</h4>
+<ul>
+<li>Executed an AWS Well-Architected Framework assessment across all 6 pillars for the Wakan architecture proposal.</li>
+<li>Identified potential bottlenecks in synchronous AI API invocations and planned asynchronous processing fallback mechanisms.</li>
+<li>Established security baselines prioritizing data encryption in transit (HTTPS/TLS) and at rest (KMS).</li>
+</ul>
+<h4 id="thursday-04062026">Thursday (04/06/2026):</h4>
+<ul>
+<li>Created fine-grained IAM Execution Roles for Lambda functions adhering strictly to the Principle of Least Privilege.</li>
+<li>Configured AWS Secrets Manager parameter structures to securely store external AI API tokens without hardcoding credentials in source code.</li>
+<li>Defined CloudWatch logging permission policies for API Gateway and Lambda execution environments.</li>
+</ul>
+<h4 id="friday-05062026">Friday (05/06/2026):</h4>
+<ul>
+<li>Presented the Wakan architecture design and Well-Architected review report to AWS Mentors.</li>
+<li>Received positive evaluation on security posture and validated the asynchronous processing strategy for AI itinerary generation.</li>
+<li>Secured formal project architecture sign-off, clearing the team to proceed into infrastructure provisioning and feature development.</li>
 </ul>
 
 
@@ -2172,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784553658"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784553658"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784553658"></script>
+    <script src="/js/jquery.sticky.js?1784553658"></script>
+    <script src="/js/featherlight.min.js?1784553658"></script>
+    <script src="/js/highlight.pack.js?1784553658"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784553658"></script>
+    <script src="/js/learn.js?1784553658"></script>
+    <script src="/js/hugo-learn.js?1784553658"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784553658" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784553658"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

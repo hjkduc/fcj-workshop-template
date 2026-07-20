@@ -15,21 +15,21 @@
     <title>Week 3 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784554210" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784554210" rel="stylesheet">
+    <link href="/css/hybrid.css?1784554210" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784554210" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784554210" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784554210" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784554210" rel="stylesheet">
+    <link href="/css/theme.css?1784554210" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784554210" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784554210" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784554210"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784554210"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784554210"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784554210"></script>
  
   </div>
 
@@ -1214,9 +1214,9 @@
 
 	<h3 id="week-3-objectives">Week 3 Objectives:</h3>
 <ul>
-<li>Automate operations using serverless computing and Systems Manager.</li>
-<li>Master Infrastructure as Code (IaC) with CloudFormation and AWS CDK.</li>
-<li>Optimize resource usage and perform advanced cost analysis (FinOps).</li>
+<li>Automate operational workflows using event-driven serverless computing (AWS Lambda) and AWS Systems Manager (SSM).</li>
+<li>Master Infrastructure as Code (IaC) using AWS CloudFormation and the AWS Cloud Development Kit (CDK).</li>
+<li>Enhance observability, automate data lifecycle management, and perform advanced cloud cost analytics (FinOps) using Amazon Athena and AWS Glue.</li>
 </ul>
 <h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
@@ -1232,46 +1232,72 @@
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Serverless automation with AWS Lambda <br> - Secure access via Systems Manager</td>
+          <td><strong>Topic: Serverless Automation with AWS Lambda &amp; Secure Access via Systems Manager</strong><br>- <strong>Knowledge:</strong><br>  + AWS Lambda: Execution model, triggers, IAM execution roles, environment variables, stateless nature.<br>  + AWS Systems Manager (SSM): Session Manager (bastionless SSH/RDP), Parameter Store (secure configuration management), Run Command, and Patch Manager.<br>- <strong>Practice:</strong><br>  + Build an event-driven AWS Lambda function triggered by Amazon S3 upload events.<br>  + Securely access a private EC2 instance using SSM Session Manager without opening inbound port 22.</td>
           <td>04/05/2026</td>
           <td>04/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Advanced CloudWatch &amp; Grafana monitoring <br> - IaC with AWS CloudFormation</td>
+          <td><strong>Topic: Advanced CloudWatch &amp; Grafana Monitoring &amp; IaC with AWS CloudFormation</strong><br>- <strong>Knowledge:</strong><br>  + Advanced CloudWatch: Custom metrics, CloudWatch Logs Insights, Amazon Managed Grafana workspace integration.<br>  + AWS CloudFormation: Declarative templates (YAML/JSON), Stacks, Parameters, Mappings, Resources, Outputs, Stack Drift Detection.<br>- <strong>Practice:</strong><br>  + Write a YAML CloudFormation template to deploy a multi-tier network and EC2 infrastructure stack.<br>  + Integrate custom CloudWatch metrics with an Amazon Managed Grafana dashboard.</td>
           <td>05/05/2026</td>
           <td>05/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Advanced IaC with AWS CDK <br> - EC2 optimization &amp; VPC Flow Logs</td>
+          <td><strong>Topic: Advanced IaC with AWS CDK, EC2 Optimization &amp; VPC Flow Logs</strong><br>- <strong>Knowledge:</strong><br>  + AWS Cloud Development Kit (CDK): Imperative IaC using TypeScript/Python, Constructs (L1, L2, L3), CDK Stacks, and CLI commands (<code>cdk synth</code>, <code>cdk deploy</code>).<br>  + EC2 Compute Optimizer: AI-driven right-sizing recommendations.<br>  + VPC Flow Logs: Network interface IP traffic monitoring and analysis.<br>- <strong>Practice:</strong><br>  + Initialize an AWS CDK project to programmatically provision an S3 Bucket and DynamoDB Table.<br>  + Enable VPC Flow Logs, capture network traffic, and query logs using CloudWatch Logs Insights.</td>
           <td>06/05/2026</td>
           <td>06/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Automated backups (EBS Data Lifecycle) <br> - VS Code Toolkit setup</td>
+          <td><strong>Topic: Automated Backups (EBS Data Lifecycle) &amp; VS Code Toolkit Setup</strong><br>- <strong>Knowledge:</strong><br>  + Amazon Data Lifecycle Manager (DLM): Automated EBS snapshot lifecycle policies.<br>  + AWS Backup: Centralized backup policies across AWS services.<br>  + AWS Toolkit for VS Code: Local serverless testing, SAM integration, and resource navigation.<br>- <strong>Practice:</strong><br>  + Configure an Amazon DLM policy to automate daily EBS snapshot creation and 7-day retention schedules.<br>  + Set up AWS Toolkit for VS Code and test Lambda execution locally.</td>
           <td>07/05/2026</td>
           <td>07/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- FinOps: Savings Plans &amp; Reserved Instances <br> - Cost analysis using AWS Glue &amp; Athena</td>
+          <td><strong>Topic: FinOps: Savings Plans &amp; Reserved Instances &amp; Cost Analysis using AWS Glue &amp; Athena</strong><br>- <strong>Knowledge:</strong><br>  + FinOps Commitment Models: Compute Savings Plans, EC2 Instance Savings Plans, vs Reserved Instances (Standard/Convertible).<br>  + Cost &amp; Usage Reports (CUR): Detailed billing data export to S3.<br>  + Serverless Big Data Analytics: AWS Glue Data Catalog &amp; Amazon Athena (SQL queries on billing data).<br>- <strong>Practice:</strong><br>  + Set up a CUR export to S3, crawl the billing schema using AWS Glue, and query detailed cost metrics via Amazon Athena SQL.</td>
           <td>08/05/2026</td>
           <td>08/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-3-achievements">Week 3 Achievements:</h3>
+<h4 id="monday-04052026">Monday (04/05/2026):</h4>
 <ul>
-<li><strong>Operational Excellence:</strong> Eliminated manual tasks by automating operations with AWS Lambda and securely managing instances via Systems Manager.</li>
-<li><strong>Infrastructure as Code:</strong> Transitioned from manual GUI configurations to programmatic infrastructure deployment using CloudFormation and AWS CDK.</li>
-<li><strong>FinOps Proficiency:</strong> Learned how to reduce waste through resource right-sizing, utilized commitment plans, and analyzed complex billing data using big data tools.</li>
+<li>Understood event-driven serverless computing architecture using AWS Lambda and execution roles.</li>
+<li>Eliminated the need for bastion hosts and open SSH port 22 by implementing secure access via AWS Systems Manager Session Manager.</li>
+<li>Stored and retrieved application parameters securely using AWS Systems Manager Parameter Store.</li>
+</ul>
+<h4 id="tuesday-05052026">Tuesday (05/05/2026):</h4>
+<ul>
+<li>Mastered declarative Infrastructure as Code (IaC) principles using AWS CloudFormation templates.</li>
+<li>Deployed repeatable infrastructure stacks and performed Stack Drift Detection to identify manual configuration changes.</li>
+<li>Deepened system observability by analyzing logs with CloudWatch Logs Insights and visualizing metrics via Amazon Managed Grafana.</li>
+</ul>
+<h4 id="wednesday-06052026">Wednesday (06/05/2026):</h4>
+<ul>
+<li>Transitioned to imperative IaC by developing infrastructure stacks using the AWS Cloud Development Kit (CDK).</li>
+<li>Analyzed EC2 Compute Optimizer recommendations to right-size instance types and eliminate resource waste.</li>
+<li>Enabled VPC Flow Logs to inspect network traffic patterns and detect unauthorized access attempts.</li>
+</ul>
+<h4 id="thursday-07052026">Thursday (07/05/2026):</h4>
+<ul>
+<li>Implemented automated data protection by configuring Amazon Data Lifecycle Manager (DLM) policies for EBS snapshots.</li>
+<li>Explored centralized governance for cross-service backup management using AWS Backup.</li>
+<li>Streamlined cloud development workflows by integrating the AWS Toolkit extension into local VS Code environments.</li>
+</ul>
+<h4 id="friday-08052026">Friday (08/05/2026):</h4>
+<ul>
+<li>Evaluated commitment-based pricing options (Savings Plans vs Reserved Instances) to optimize long-term compute expenditure.</li>
+<li>Configured AWS Cost &amp; Usage Reports (CUR) to deliver granular billing data to an Amazon S3 storage bucket.</li>
+<li>Utilized AWS Glue and Amazon Athena to run serverless SQL queries on raw billing data, gaining deep financial visibility (FinOps).</li>
 </ul>
 
 
@@ -2174,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784554210"></script>
+    <script src="/js/jquery.sticky.js?1784554210"></script>
+    <script src="/js/featherlight.min.js?1784554210"></script>
+    <script src="/js/highlight.pack.js?1784554210"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784554210"></script>
+    <script src="/js/learn.js?1784554210"></script>
+    <script src="/js/hugo-learn.js?1784554210"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784554210" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784554210"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

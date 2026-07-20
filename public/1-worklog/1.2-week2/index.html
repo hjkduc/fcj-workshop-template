@@ -15,21 +15,21 @@
     <title>Week 2 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784553342" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784553342" rel="stylesheet">
+    <link href="/css/hybrid.css?1784553342" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784553342" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784553342" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784553342" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784553342" rel="stylesheet">
+    <link href="/css/theme.css?1784553342" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784553342" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784553342" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784553342"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784553342"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784553342"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784553342"></script>
  
   </div>
 
@@ -1214,9 +1214,9 @@
 
 	<h3 id="week-2-objectives">Week 2 Objectives:</h3>
 <ul>
-<li>Explore advanced databases, CDN, and migration strategies.</li>
-<li>Implement comprehensive security across identity, data, and edge protection.</li>
-<li>Design highly available (HA) and fault-tolerant architectures.</li>
+<li>Explore advanced database solutions (DynamoDB, ElastiCache), Content Delivery Networks (CloudFront), and migration strategies (DMS, Disaster Recovery).</li>
+<li>Implement comprehensive enterprise security across identity (Cognito, SSO), data protection (KMS, Macie), threat detection (GuardDuty), and edge protection (WAF).</li>
+<li>Design highly available, fault-tolerant, and interconnected multi-VPC networks (Transit Gateway, EBS Multi-Attach).</li>
 </ul>
 <h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
@@ -1232,46 +1232,72 @@
   <tbody>
       <tr>
           <td>2</td>
-          <td>- NoSQL with DynamoDB &amp; Caching with ElastiCache <br> - Content delivery via CloudFront</td>
+          <td><strong>Topic: NoSQL with DynamoDB, Caching with ElastiCache &amp; Content Delivery via CloudFront</strong><br>- <strong>Knowledge:</strong><br>  + Amazon DynamoDB: Key-value NoSQL database, Partition/Sort Keys, Global/Local Secondary Indexes (GSI/LSI), Time-To-Live (TTL).<br>  + Amazon ElastiCache: In-memory caching engines (Redis vs Memcached), Caching strategies (Lazy Loading, Write-Through).<br>  + Amazon CloudFront: Global Content Delivery Network (CDN), Edge Locations, Cache Behaviors, Origin Access Control (OAC).<br>- <strong>Practice:</strong><br>  + Create a DynamoDB table with GSI and TTL auto-expiration.<br>  + Deploy a CloudFront Distribution pointing to an S3 Bucket origin with OAC restrictions.</td>
           <td>27/04/2026</td>
           <td>27/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Server Migration (VM Import) &amp; DB Migration (DMS) <br> - Disaster Recovery</td>
+          <td><strong>Topic: Server Migration (VM Import), DB Migration (DMS) &amp; Disaster Recovery (DR)</strong><br>- <strong>Knowledge:</strong><br>  + AWS Migration Strategies: 6 Rs of migration, AWS Application Migration Service (MGN).<br>  + AWS Database Migration Service (DMS): Replication Instances, Source/Target Endpoints, Schema Conversion Tool (SCT).<br>  + Disaster Recovery (DR): RTO &amp; RPO metrics, DR strategies (Backup &amp; Restore, Pilot Light, Warm Standby, Multi-Site Active-Active).<br>- <strong>Practice:</strong><br>  + Setup an AWS DMS replication instance and configure a migration task from RDS MySQL to S3/DynamoDB.<br>  + Design a Pilot Light DR architecture diagram for an enterprise web app.</td>
           <td>28/04/2026</td>
           <td>28/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Identity (SSO, Cognito) &amp; Access boundaries <br> - App protection with WAF &amp; Firewall Manager</td>
+          <td><strong>Topic: Identity Management (SSO, Cognito) &amp; Application Protection (WAF, Firewall Manager)</strong><br>- <strong>Knowledge:</strong><br>  + IAM Identity Center (AWS SSO) &amp; Identity Boundaries.<br>  + Amazon Cognito: User Pools (Authentication) vs Identity Pools (Authorization/Federated Identities).<br>  + AWS WAF (Web Application Firewall): Web ACLs, Managed Rule Groups, Rate-based Rules.<br>  + AWS Firewall Manager: Centralized security management across multi-account AWS Organizations.<br>- <strong>Practice:</strong><br>  + Create an Amazon Cognito User Pool with email verification &amp; MFA enabled.<br>  + Attach an AWS WAF Web ACL with SQLi/XSS protection rules to an ALB or CloudFront Endpoint.</td>
           <td>29/04/2026</td>
           <td>29/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Data protection (KMS, Macie) &amp; Threat detection (GuardDuty) <br> - Network Integration (Transit Gateway)</td>
+          <td><strong>Topic: Data Protection (KMS, Macie), Threat Detection (GuardDuty) &amp; Network Integration (Transit Gateway)</strong><br>- <strong>Knowledge:</strong><br>  + AWS KMS: Symmetric vs Asymmetric Keys, Envelope Encryption, Customer Managed Keys (CMK).<br>  + Amazon Macie: Automated PII (Personally Identifiable Information) discovery &amp; data classification using ML.<br>  + Amazon GuardDuty: Continuous threat intelligence &amp; anomaly detection.<br>  + AWS Transit Gateway: Centralized hub-and-spoke network router connecting multi-VPC and on-premises networks.<br>- <strong>Practice:</strong><br>  + Generate a KMS CMK key and configure S3 server-side encryption (SSE-KMS).<br>  + Set up AWS Transit Gateway to interconnect two isolated VPCs without VPC Peering.</td>
           <td>30/04/2026</td>
           <td>30/04/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- High Availability Storage (EBS Multi-Attach) <br> - Windows &amp; SQL Server Failover Clusters</td>
+          <td><strong>Topic: High Availability Storage (EBS Multi-Attach) &amp; Enterprise Failover Clusters</strong><br>- <strong>Knowledge:</strong><br>  + EBS Provisioned IOPS (io1/io2) with Multi-Attach capabilities.<br>  + Windows Server Failover Clustering (WSFC) &amp; SQL Server Always On Availability Groups on AWS.<br>  + FSx for Windows File Server: Multi-AZ shared file storage.<br>- <strong>Practice:</strong><br>  + Provision an io2 EBS volume with Multi-Attach enabled and mount it across multiple Linux EC2 instances.<br>  + Review architectural patterns for deploying Multi-AZ SQL Server Failover Clusters on AWS.</td>
           <td>01/05/2026</td>
           <td>01/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-2-achievements">Week 2 Achievements:</h3>
+<h4 id="monday-27042026">Monday (27/04/2026):</h4>
 <ul>
-<li><strong>Advanced Architecture:</strong> Understood NoSQL caching mechanisms and utilized CloudFront to reduce latency globally.</li>
-<li><strong>Security &amp; Compliance:</strong> Deployed multi-layered security using WAF, KMS, and GuardDuty while securely managing user identities.</li>
-<li><strong>Reliability:</strong> Designed robust fault-tolerant environments capable of disaster recovery and high availability for enterprise workloads.</li>
+<li>Mastered NoSQL database design principles with Amazon DynamoDB, including partition key strategies and TTL.</li>
+<li>Understood in-memory caching patterns using Amazon ElastiCache (Redis) to relieve database read pressure.</li>
+<li>Deployed Amazon CloudFront with Origin Access Control (OAC), securing S3 origins and accelerating global content delivery.</li>
+</ul>
+<h4 id="tuesday-28042026">Tuesday (28/04/2026):</h4>
+<ul>
+<li>Analyzed the 6 Rs of cloud migration and mastered the mechanics of AWS Database Migration Service (DMS).</li>
+<li>Configured an active DMS replication pipeline to migrate relational data with minimal downtime.</li>
+<li>Evaluated RTO and RPO requirements to formulate appropriate Disaster Recovery (DR) architectures (Pilot Light &amp; Warm Standby).</li>
+</ul>
+<h4 id="wednesday-29042026">Wednesday (29/04/2026):</h4>
+<ul>
+<li>Deepened identity management knowledge through IAM Identity Center and Amazon Cognito.</li>
+<li>Built a secure authentication workflow using Amazon Cognito User Pools.</li>
+<li>Implemented perimeter protection by configuring AWS WAF Web ACLs against common web vulnerabilities (OWASP Top 10).</li>
+</ul>
+<h4 id="thursday-30042026">Thursday (30/04/2026):</h4>
+<ul>
+<li>Mastered envelope encryption concepts using AWS KMS Customer Managed Keys (CMK).</li>
+<li>Learned automated PII data discovery techniques with Amazon Macie and threat detection with Amazon GuardDuty.</li>
+<li>Interconnected multiple isolated VPCs using AWS Transit Gateway in a scalable hub-and-spoke topology.</li>
+</ul>
+<h4 id="friday-01052026">Friday (01/05/2026):</h4>
+<ul>
+<li>Explored high-performance block storage using EBS Multi-Attach on io2 volumes.</li>
+<li>Analyzed high-availability enterprise patterns for Windows Server Failover Clustering (WSFC) and SQL Server.</li>
+<li>Understood shared storage options for enterprise workloads using Amazon FSx for Windows File Server.</li>
 </ul>
 
 
@@ -2174,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784553342"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784553342"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784553342"></script>
+    <script src="/js/jquery.sticky.js?1784553342"></script>
+    <script src="/js/featherlight.min.js?1784553342"></script>
+    <script src="/js/highlight.pack.js?1784553342"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784553342"></script>
+    <script src="/js/learn.js?1784553342"></script>
+    <script src="/js/hugo-learn.js?1784553342"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784553342" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784553342"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

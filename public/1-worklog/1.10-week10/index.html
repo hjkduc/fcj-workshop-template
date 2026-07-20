@@ -15,21 +15,21 @@
     <title>Week 10 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784553867" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784553867" rel="stylesheet">
+    <link href="/css/hybrid.css?1784553867" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784553867" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784553867" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784553867" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784553867" rel="stylesheet">
+    <link href="/css/theme.css?1784553867" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784553867" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784553867" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784553867"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784553867"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784553867"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784553867"></script>
  
   </div>
 
@@ -1184,7 +1184,7 @@
     <li>
       <ul>
         <li><a href="#week-10-objectives">Week 10 Objectives:</a></li>
-        <li><a href="#tasks-completed-this-week">Tasks completed this week:</a></li>
+        <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
         <li><a href="#week-10-achievements">Week 10 Achievements:</a></li>
       </ul>
     </li>
@@ -1214,11 +1214,11 @@
 
 	<h3 id="week-10-objectives">Week 10 Objectives:</h3>
 <ul>
-<li>Establish a robust monitoring and alerting ecosystem.</li>
-<li>Enforce cost controls via budget alerts.</li>
-<li>Participate in end-to-end system testing and bug fixing.</li>
+<li>Perform End-to-End (E2E) full system integration testing across all Wakan cloud microservices.</li>
+<li>Establish a centralized observability and monitoring framework using Amazon CloudWatch Logs and CloudWatch Alarms.</li>
+<li>Enforce financial guardrails and cost controls via AWS Budgets and SNS notifications to protect promotional credits.</li>
 </ul>
-<h3 id="tasks-completed-this-week">Tasks completed this week:</h3>
+<h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
   <thead>
       <tr>
@@ -1226,51 +1226,78 @@
           <th>Task</th>
           <th>Start Date</th>
           <th>Completion Date</th>
-          <th>Status</th>
+          <th>Reference Material</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Initial End-to-End full system test</td>
+          <td><strong>Topic: End-to-End (E2E) Full System Integration Testing</strong><br>- <strong>Knowledge:</strong><br>  + End-to-End synthetic user testing methodologies for decoupled serverless architectures.<br>  + Trace analysis across CloudFront -&gt; API Gateway -&gt; Cognito -&gt; Lambda (Orchestrator &amp; AI Processor) -&gt; DynamoDB.<br>  + Edge-case validation: Auth failure, API timeout, cache hit/miss logic.<br>- <strong>Practice:</strong><br>  + Execute full user journeys (registration, login, travel preference selection, AI itinerary generation, cache retrieval).<br>  + Benchmark latency and identify processing bottlenecks during live AI API invocation.</td>
           <td>22/06/2026</td>
           <td>22/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Configure CloudWatch Logs for all services</td>
+          <td><strong>Topic: Centralized Observability &amp; CloudWatch Logs Management</strong><br>- <strong>Knowledge:</strong><br>  + Amazon CloudWatch Log Groups, Log Streams, Log Retention Policies, and structured JSON logging.<br>  + Log aggregation across API Gateway, Lambda functions, Cognito, and WAF.<br>  + Querying multi-service logs efficiently using CloudWatch Logs Insights.<br>- <strong>Practice:</strong><br>  + Configure 14-day retention policies on all Wakan CloudWatch Log Groups to prevent unnecessary storage costs.<br>  + Write custom CloudWatch Logs Insights queries to track API error counts and cold start execution times.</td>
           <td>23/06/2026</td>
           <td>23/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Setup CloudWatch Alarms for error thresholds</td>
+          <td><strong>Topic: Proactive Monitoring, CloudWatch Alarms &amp; SNS Alerting</strong><br>- <strong>Knowledge:</strong><br>  + Amazon CloudWatch Alarms, metric math, static threshold vs anomaly detection models.<br>  + Amazon SNS (Simple Notification Service) developer alert topics.<br>  + Key performance indicators (KPIs): API Gateway 5xx rate, Lambda execution errors, DynamoDB throttling.<br>- <strong>Practice:</strong><br>  + Create an Amazon SNS alert topic sending email notifications to the engineering team.<br>  + Configure CloudWatch Alarms for Lambda error thresholds (&gt;2% error rate) and API Gateway HTTP 5xx responses.</td>
           <td>24/06/2026</td>
           <td>24/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Configure AWS Budget alerts based on credit %</td>
+          <td><strong>Topic: Financial Guardrails, AWS Budgets &amp; Anomaly Detection</strong><br>- <strong>Knowledge:</strong><br>  + FinOps cost control mechanisms and tracking credit exhaustion rates on AWS.<br>  + AWS Budgets: Fixed amount vs percentage thresholds, actual spend vs forecasted spend alerts.<br>  + AWS Cost Anomaly Detection integration for automatic cost spike identification.<br>- <strong>Practice:</strong><br>  + Configure AWS Budgets with tiered email alerts triggered when credit consumption reaches 50%, 80%, and 100%.<br>  + Set up AWS Cost Anomaly Detection monitors targeting Wakan serverless compute and database services.</td>
           <td>25/06/2026</td>
           <td>25/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Cross-department bug fixing and optimization</td>
+          <td><strong>Topic: Serverless Performance Optimization &amp; Cross-Team Bug Remediation</strong><br>- <strong>Knowledge:</strong><br>  + AWS Lambda cold start mitigation, memory provisioning optimization, and concurrency limits.<br>  + DynamoDB query vs scan performance tuning, TTL cleanup verification.<br>- <strong>Practice:</strong><br>  + Resolve bugs identified during E2E testing (handling JSON parsing edge cases and CORS preflight headers).<br>  + Fine-tune Lambda memory allocations to reduce execution duration and lower overall execution cost.</td>
           <td>26/06/2026</td>
           <td>26/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-10-achievements">Week 10 Achievements:</h3>
+<h4 id="monday-22062026">Monday (22/06/2026):</h4>
 <ul>
-<li><strong>Observability:</strong> Centralized logging using CloudWatch and set up proactive Alarms to notify the team of system anomalies.</li>
-<li><strong>FinOps:</strong> Secured project finances by implementing AWS Budget alerts to prevent unexpected charges or credit exhaustion.</li>
+<li>Executed synthetic End-to-End (E2E) integration testing simulating real user journeys on the Wakan application.</li>
+<li>Verified seamless request forwarding from CloudFront edge locations through API Gateway to Cognito authentication and Lambda compute.</li>
+<li>Tested DynamoDB caching logic, confirming that duplicate itinerary requests successfully hit cache and return instant responses without triggering external AI calls.</li>
+</ul>
+<h4 id="tuesday-23062026">Tuesday (23/06/2026):</h4>
+<ul>
+<li>Centralized system-wide logging by configuring Amazon CloudWatch Log Groups for API Gateway, Lambda functions, and AWS WAF.</li>
+<li>Implemented a 14-day log retention policy across all log groups to avoid storage bloat and unnecessary cloud costs.</li>
+<li>Mastered CloudWatch Logs Insights, authoring custom SQL-like queries to parse structured JSON logs and diagnose system exceptions.</li>
+</ul>
+<h4 id="wednesday-24062026">Wednesday (24/06/2026):</h4>
+<ul>
+<li>Built a proactive system alerting ecosystem using Amazon CloudWatch Alarms integrated with Amazon SNS email notifications.</li>
+<li>Set up automated alarms triggering notifications when API Gateway returns 5xx Server Errors or when Lambda functions experience execution failures.</li>
+<li>Configured DynamoDB read/write capacity alarms to detect potential database throttling during traffic spikes.</li>
+</ul>
+<h4 id="thursday-25062026">Thursday (25/06/2026):</h4>
+<ul>
+<li>Secured project finances by implementing multi-tiered budget alerts in AWS Budgets to monitor promotional credit usage.</li>
+<li>Set up automated email notifications when actual or forecasted cloud expenditure reaches 50%, 80%, and 100% of allocated budget limits.</li>
+<li>Activated AWS Cost Anomaly Detection to automatically alert the team if unexpected cost spikes occur in Lambda or DynamoDB usage.</li>
+</ul>
+<h4 id="friday-26062026">Friday (26/06/2026):</h4>
+<ul>
+<li>Collaborated across sub-teams (Frontend, Backend, AI) to fix edge-case bugs discovered during initial E2E testing.</li>
+<li>Resolved CORS preflight header issues on API Gateway and handled unexpected payload formatting from external AI APIs.</li>
+<li>Optimized Lambda memory configurations, successfully reducing average execution times and improving overall application responsiveness.</li>
 </ul>
 
 
@@ -2173,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784553867"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784553867"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784553867"></script>
+    <script src="/js/jquery.sticky.js?1784553867"></script>
+    <script src="/js/featherlight.min.js?1784553867"></script>
+    <script src="/js/highlight.pack.js?1784553867"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784553867"></script>
+    <script src="/js/learn.js?1784553867"></script>
+    <script src="/js/hugo-learn.js?1784553867"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784553867" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784553867"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -15,21 +15,21 @@
     <title>Week 11 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784553927" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784553927" rel="stylesheet">
+    <link href="/css/hybrid.css?1784553927" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784553927" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784553927" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784553927" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784553927" rel="stylesheet">
+    <link href="/css/theme.css?1784553927" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784553927" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784553927" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784553927"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784553927"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784553927"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784553927"></script>
  
   </div>
 
@@ -1184,7 +1184,7 @@
     <li>
       <ul>
         <li><a href="#week-11-objectives">Week 11 Objectives:</a></li>
-        <li><a href="#tasks-completed-this-week">Tasks completed this week:</a></li>
+        <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
         <li><a href="#week-11-achievements">Week 11 Achievements:</a></li>
       </ul>
     </li>
@@ -1214,11 +1214,11 @@
 
 	<h3 id="week-11-objectives">Week 11 Objectives:</h3>
 <ul>
-<li>Conduct basic penetration testing to validate security measures.</li>
-<li>Review IAM policies and ensure no sensitive data leaks.</li>
-<li>Finalize optimizations before the product demo.</li>
+<li>Conduct basic penetration testing and simulate attack vectors to validate edge and application security measures.</li>
+<li>Audit IAM policies and resource permissions using IAM Access Analyzer to eliminate privilege escalation risks and sensitive data leaks.</li>
+<li>Patch identified vulnerabilities, harden infrastructure, and finalize the comprehensive Cloud Security Audit Report before the product demo.</li>
 </ul>
-<h3 id="tasks-completed-this-week">Tasks completed this week:</h3>
+<h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
   <thead>
       <tr>
@@ -1226,51 +1226,78 @@
           <th>Task</th>
           <th>Start Date</th>
           <th>Completion Date</th>
-          <th>Status</th>
+          <th>Reference Material</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>2</td>
-          <td>- General team review on testing outcomes</td>
+          <td><strong>Topic: General Team Review on Testing Outcomes &amp; Security Baseline</strong><br>- <strong>Knowledge:</strong><br>  + Penetration testing methodologies for serverless architectures, vulnerability severity scoring (CVSS v3.1), OWASP Top 10 API Security Risks.<br>  + Setting security assessment scopes across web frontend, API endpoints, and database tiers.<br>- <strong>Practice:</strong><br>  + Analyze E2E test results with cross-functional sub-teams, define security assessment scopes, and configure attack simulation tools (OWASP ZAP, Postman).</td>
           <td>29/06/2026</td>
           <td>29/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Simulate WAF attacks (SQLi, XSS)</td>
+          <td><strong>Topic: Penetration Testing &amp; WAF Attack Simulation (SQLi, XSS, Rate Limits)</strong><br>- <strong>Knowledge:</strong><br>  + Web application exploit vectors (SQL Injection, Cross-Site Scripting - XSS, Parameter Tampering, HTTP Flood).<br>  + AWS WAF rule evaluation mechanics and Web ACL inspection logs.<br>- <strong>Practice:</strong><br>  + Execute malicious payload simulations against CloudFront and API Gateway endpoints using OWASP ZAP.<br>  + Verify AWS WAF blocking capabilities and inspect WAF blocked request logs in CloudWatch.</td>
           <td>30/06/2026</td>
           <td>30/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Review and restrict excessive IAM privileges</td>
+          <td><strong>Topic: IAM Policy Hardening &amp; Least-Privilege Audit</strong><br>- <strong>Knowledge:</strong><br>  + Automated IAM auditing using AWS IAM Access Analyzer.<br>  + Identifying privilege escalation vectors and wildcard (<code>*</code>) over-grant risks in Action and Resource clauses.<br>  + Condition key enforcement (<code>aws:PrincipalTag</code>, <code>aws:SecureTransport</code>).<br>- <strong>Practice:</strong><br>  + Scan all Lambda execution roles and IAM policies using IAM Access Analyzer.<br>  + Restrict wildcard resource permissions to exact DynamoDB/S3 ARNs and remove unused IAM permissions.</td>
           <td>01/07/2026</td>
           <td>01/07/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Audit Secrets Manager for potential leaks</td>
+          <td><strong>Topic: Secrets Manager Audit, Data Leak Prevention &amp; Encryption Inspection</strong><br>- <strong>Knowledge:</strong><br>  + Data Loss Prevention (DLP) in cloud environments, KMS key policies, rotation logs.<br>  + Detecting sensitive credential exposure in CloudWatch Logs streams or API response payloads.<br>- <strong>Practice:</strong><br>  + Audit AWS Secrets Manager access logs and inspect CloudWatch Logs using Insights queries to ensure no raw AI tokens or credentials are logged.<br>  + Enforce KMS key policy boundaries restricting secret decryption strictly to authorized roles.</td>
           <td>02/07/2026</td>
           <td>02/07/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Patch vulnerabilities and finalize security report</td>
+          <td><strong>Topic: Vulnerability Patching, Hardening &amp; Final Security Report Generation</strong><br>- <strong>Knowledge:</strong><br>  + Remediation strategies for cloud misconfigurations, hardening CORS policies, and request body validation.<br>  + Drafting formal Cloud Cybersecurity Assessment Reports for enterprise review.<br>- <strong>Practice:</strong><br>  + Patch identified minor vulnerabilities (stricter CORS origins, tighter API Gateway request models).<br>  + Compile security audit findings and generate the final Cloud Security Audit Report for Wakan.</td>
           <td>03/07/2026</td>
           <td>03/07/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-11-achievements">Week 11 Achievements:</h3>
+<h4 id="monday-29062026">Monday (29/06/2026):</h4>
 <ul>
-<li><strong>Penetration Testing:</strong> Successfully validated the effectiveness of WAF by simulating web exploits and confirmed Secrets Manager integrity.</li>
-<li><strong>IAM Hardening:</strong> Audited and refined IAM policies, ensuring strict compliance with security best practices prior to launch.</li>
+<li>Conducted a general team review of E2E testing outcomes and established penetration testing scopes for the Wakan application.</li>
+<li>Set up security assessment and API vulnerability scanning tools (OWASP ZAP, Burp Suite, Postman).</li>
+<li>Aligned vulnerability severity benchmarks based on CVSS v3.1 and OWASP Top 10 API Security standards.</li>
+</ul>
+<h4 id="tuesday-30062026">Tuesday (30/06/2026):</h4>
+<ul>
+<li>Executed simulated web exploits (SQL Injection, Cross-Site Scripting, HTTP Floods) targeting Wakan endpoints.</li>
+<li>Confirmed that AWS WAF Web ACLs successfully intercepted and blocked 100% of malicious attack payloads at the edge.</li>
+<li>Inspected WAF Sampled Logs in CloudWatch to verify correct rule matching and IP blocking responses.</li>
+</ul>
+<h4 id="wednesday-01072026">Wednesday (01/07/2026):</h4>
+<ul>
+<li>Audited all IAM policies across Lambda execution roles using AWS IAM Access Analyzer.</li>
+<li>Eliminated all wildcard (<code>*</code>) resource permissions, restricting database access strictly to specific Wakan DynamoDB ARNs.</li>
+<li>Enforced the Principle of Least Privilege across all execution roles, revoking unnecessary permissions.</li>
+</ul>
+<h4 id="thursday-02072026">Thursday (02/07/2026):</h4>
+<ul>
+<li>Audited AWS Secrets Manager access patterns and KMS key policies protecting external AI API tokens.</li>
+<li>Executed CloudWatch Logs Insights queries across all log streams, verifying zero leakage of plain-text secrets or sensitive tokens.</li>
+<li>Restricted KMS decryption permissions strictly to the AWS Lambda (AI Processor) execution role.</li>
+</ul>
+<h4 id="friday-03072026">Friday (03/07/2026):</h4>
+<ul>
+<li>Patched identified minor security misconfigurations, enforcing strict origin matching on API Gateway CORS policies.</li>
+<li>Verified JSON Schema payload validation models to drop malformed input requests before reaching compute layers.</li>
+<li>Compiled all security testing findings and generated the comprehensive Cloud Security Audit Report for the Wakan platform.</li>
 </ul>
 
 
@@ -2173,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784553927"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784553927"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784553927"></script>
+    <script src="/js/jquery.sticky.js?1784553927"></script>
+    <script src="/js/featherlight.min.js?1784553927"></script>
+    <script src="/js/highlight.pack.js?1784553927"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784553927"></script>
+    <script src="/js/learn.js?1784553927"></script>
+    <script src="/js/hugo-learn.js?1784553927"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784553927" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784553927"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

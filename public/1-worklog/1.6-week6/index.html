@@ -15,21 +15,21 @@
     <title>Week 6 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784554210" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784554210" rel="stylesheet">
+    <link href="/css/hybrid.css?1784554210" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784554210" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784554210" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784554210" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784554210" rel="stylesheet">
+    <link href="/css/theme.css?1784554210" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784554210" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784554210" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784554210"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784554210"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784554210"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784554210"></script>
  
   </div>
 
@@ -1214,9 +1214,9 @@
 
 	<h3 id="week-6-objectives">Week 6 Objectives:</h3>
 <ul>
-<li>Build foundational knowledge of Data Lakes and Data Analytics.</li>
-<li>Learn serverless querying and Business Intelligence (BI) visualization.</li>
-<li>Dive into Machine Learning workflows with Amazon SageMaker.</li>
+<li>Build foundational knowledge of Data Lakes, Data Governance, and Data Analytics pipelines on AWS.</li>
+<li>Learn serverless query engines (Amazon Athena) and Business Intelligence (BI) visualization using Amazon QuickSight.</li>
+<li>Deepen relational database expertise with Amazon Aurora PostgreSQL and dive into Machine Learning workflows using Amazon SageMaker.</li>
 </ul>
 <h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
@@ -1232,46 +1232,72 @@
   <tbody>
       <tr>
           <td>2</td>
-          <td>- AWS Data Lake fundamentals <br> - Architecting your own Data Lake</td>
+          <td><strong>Topic: AWS Data Lake Fundamentals &amp; Architecting Data Lakes</strong><br>- <strong>Knowledge:</strong><br>  + Data Lake vs Data Warehouse: Differences, storage decoupling, structured vs unstructured data.<br>  + AWS Lake Formation: Centralized data governance, fine-grained access control (column/row-level permissions), and Data Cataloging.<br>- <strong>Practice:</strong><br>  + Ingest raw datasets into Amazon S3 storage tiers.<br>  + Configure AWS Lake Formation permissions and register S3 paths into the AWS Glue Data Catalog.</td>
           <td>25/05/2026</td>
           <td>25/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Data Analytics service overview <br> - Business Intelligence with QuickSight</td>
+          <td><strong>Topic: Data Analytics Service Overview &amp; Business Intelligence with Amazon QuickSight</strong><br>- <strong>Knowledge:</strong><br>  + AWS Analytics Ecosystem: Amazon Kinesis (streaming data), EMR (Big Data), Redshift (Data Warehouse).<br>  + Amazon QuickSight: Cloud-native BI, SPICE in-memory engine, interactive dashboards, and ML-powered insights.<br>- <strong>Practice:</strong><br>  + Connect Amazon QuickSight to an Athena/S3 data source using SPICE caching.<br>  + Build and publish an interactive business analytics dashboard with customized visuals.</td>
           <td>26/05/2026</td>
           <td>26/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Data Engineering Immersion Day <br> - Serverless analytics with Amazon Athena</td>
+          <td><strong>Topic: Data Engineering Immersion Day &amp; Serverless Analytics with Amazon Athena</strong><br>- <strong>Knowledge:</strong><br>  + Serverless Querying: Amazon Athena, Presto SQL engine, pay-per-query cost model.<br>  + Performance &amp; Cost Optimization: Columnar storage formats (Apache Parquet / ORC), compression (Snappy), and data partitioning strategies.<br>- <strong>Practice:</strong><br>  + Convert raw JSON/CSV log datasets into Apache Parquet format using AWS Glue ETL jobs.<br>  + Execute SQL analytics queries in Amazon Athena and measure query cost savings via partitioning.</td>
           <td>27/05/2026</td>
           <td>27/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Advanced PostgreSQL on AWS - Part 1 &amp; 2</td>
+          <td><strong>Topic: Advanced PostgreSQL on AWS - Part 1 &amp; 2 (Amazon Aurora PostgreSQL)</strong><br>- <strong>Knowledge:</strong><br>  + Amazon Aurora Architecture: Cloud-native relational database, distributed 6-way storage replication, Serverless v2, and Read Replicas.<br>  + Database Performance Tuning: Amazon RDS Performance Insights, Query Execution Plans, and pgvector extension for AI workloads.<br>- <strong>Practice:</strong><br>  + Provision an Amazon Aurora PostgreSQL Serverless v2 cluster with auto-scaling capacity.<br>  + Analyze database workload bottlenecks and slow queries using RDS Performance Insights.</td>
           <td>28/05/2026</td>
           <td>28/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Machine Learning concepts <br> - Model training with Amazon SageMaker</td>
+          <td><strong>Topic: Machine Learning Concepts &amp; Model Training with Amazon SageMaker</strong><br>- <strong>Knowledge:</strong><br>  + End-to-End ML Lifecycle: Data preparation, model building, training, tuning, deployment, and monitoring.<br>  + Amazon SageMaker Suite: SageMaker Studio, built-in algorithms (XGBoost, Linear Learner), Managed Spot Training, and Inference Endpoints.<br>- <strong>Practice:</strong><br>  + Prepare and clean a sample dataset inside Amazon SageMaker Studio Jupyter Notebooks.<br>  + Train an XGBoost classification model and deploy it to a real-time SageMaker Inference Endpoint.</td>
           <td>29/05/2026</td>
           <td>29/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-6-achievements">Week 6 Achievements:</h3>
+<h4 id="monday-25052026">Monday (25/05/2026):</h4>
 <ul>
-<li><strong>Data Lake Architecture:</strong> Understood the distinction between traditional databases and Data Lakes, learning to store unstructured data securely at scale.</li>
-<li><strong>Data Analytics:</strong> Gained the ability to execute serverless SQL queries directly on S3 using Athena and translate data into actionable insights with QuickSight dashboards.</li>
-<li><strong>Machine Learning Foundation:</strong> Familiarized with the complete AI/ML lifecycle and the pivotal role of Amazon SageMaker in building, training, and deploying intelligent models.</li>
+<li>Mastered architectural differences between traditional Data Warehouses and modern Data Lakes on Amazon S3.</li>
+<li>Configured fine-grained access control policies (row and column-level security) using AWS Lake Formation.</li>
+<li>Registered raw S3 datasets into the AWS Glue Data Catalog to build a centralized metadata repository.</li>
+</ul>
+<h4 id="tuesday-26052026">Tuesday (26/05/2026):</h4>
+<ul>
+<li>Explored the full spectrum of AWS Big Data and Analytics services (Kinesis, EMR, Redshift, QuickSight).</li>
+<li>Connected Amazon QuickSight to cloud data sources and leveraged the SPICE in-memory engine for rapid data processing.</li>
+<li>Built interactive Business Intelligence (BI) dashboards featuring automated ML insights and visual KPIs.</li>
+</ul>
+<h4 id="wednesday-27052026">Wednesday (27/05/2026):</h4>
+<ul>
+<li>Learned serverless data engineering techniques using Amazon Athena to query S3 data directly with SQL.</li>
+<li>Optimized analytics performance and reduced query costs by converting raw files into Apache Parquet columnar format via AWS Glue.</li>
+<li>Implemented data partitioning strategies to minimize data scanned during analytical queries.</li>
+</ul>
+<h4 id="thursday-28052026">Thursday (28/05/2026):</h4>
+<ul>
+<li>Deepened database management skills with Amazon Aurora PostgreSQL Serverless v2 enterprise architecture.</li>
+<li>Evaluated Aurora&rsquo;s distributed multi-AZ storage replication and instant read-scaling capabilities.</li>
+<li>Utilized RDS Performance Insights to diagnose database execution bottlenecks and tune SQL queries.</li>
+</ul>
+<h4 id="friday-29052026">Friday (29/05/2026):</h4>
+<ul>
+<li>Acquired a comprehensive understanding of the complete Machine Learning lifecycle on AWS.</li>
+<li>Utilized Amazon SageMaker Studio to prepare datasets, build feature pipelines, and train models using built-in algorithms.</li>
+<li>Deployed a trained Machine Learning model to a scalable, real-time SageMaker Inference Endpoint for API predictions.</li>
 </ul>
 
 
@@ -2174,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784554210"></script>
+    <script src="/js/jquery.sticky.js?1784554210"></script>
+    <script src="/js/featherlight.min.js?1784554210"></script>
+    <script src="/js/highlight.pack.js?1784554210"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784554210"></script>
+    <script src="/js/learn.js?1784554210"></script>
+    <script src="/js/hugo-learn.js?1784554210"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784554210" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784554210"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

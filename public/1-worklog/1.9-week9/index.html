@@ -15,21 +15,21 @@
     <title>Week 9 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784554210" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784554210" rel="stylesheet">
+    <link href="/css/hybrid.css?1784554210" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784554210" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784554210" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784554210" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784554210" rel="stylesheet">
+    <link href="/css/theme.css?1784554210" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784554210" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784554210" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784554210"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784554210"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784554210"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784554210"></script>
  
   </div>
 
@@ -1184,7 +1184,7 @@
     <li>
       <ul>
         <li><a href="#week-9-objectives">Week 9 Objectives:</a></li>
-        <li><a href="#tasks-completed-this-week">Tasks completed this week:</a></li>
+        <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
         <li><a href="#week-9-achievements">Week 9 Achievements:</a></li>
       </ul>
     </li>
@@ -1214,11 +1214,11 @@
 
 	<h3 id="week-9-objectives">Week 9 Objectives:</h3>
 <ul>
-<li>Secure sensitive credentials used by AI processing modules.</li>
-<li>Implement API rate limiting to prevent spam and abuse.</li>
-<li>Conduct internal security audits and cross-review code.</li>
+<li>Secure sensitive credentials used by AI processing modules using AWS Secrets Manager.</li>
+<li>Implement API rate limiting, throttling, and usage plans on Amazon API Gateway to prevent spam and resource abuse.</li>
+<li>Conduct internal security audits, cross-review backend/AI codebase, and enforce strict cloud security policies.</li>
 </ul>
-<h3 id="tasks-completed-this-week">Tasks completed this week:</h3>
+<h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
   <thead>
       <tr>
@@ -1226,51 +1226,78 @@
           <th>Task</th>
           <th>Start Date</th>
           <th>Completion Date</th>
-          <th>Status</th>
+          <th>Reference Material</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Cross-review code with Backend and AI teams</td>
+          <td><strong>Topic: Peer Code Review &amp; Secure Coding Standards (Backend &amp; AI Integration)</strong><br>- <strong>Knowledge:</strong><br>  + Static Application Security Testing (SAST) principles and OWASP Secure Coding Guidelines.<br>  + Identifying hardcoded credential vulnerabilities and insecure direct object references (IDOR).<br>  + Error handling best practices to prevent sensitive stack trace leakage.<br>- <strong>Practice:</strong><br>  + Perform cross-team code review on Lambda backend scripts and AI integration modules.<br>  + Refactor Lambda codebase to remove local environment secret dependencies and standardize error responses.</td>
           <td>15/06/2026</td>
           <td>15/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Configure AWS Secrets Manager for AI API Keys</td>
+          <td><strong>Topic: Credential Management &amp; Encryption with AWS Secrets Manager</strong><br>- <strong>Knowledge:</strong><br>  + AWS Secrets Manager architecture, secret rotation strategies, and KMS envelope encryption.<br>  + Dynamic secret retrieval at runtime via AWS SDK vs caching secrets in Lambda global memory scope.<br>  + Resource-based policies for Secrets Manager to restrict cross-account and unauthorized access.<br>- <strong>Practice:</strong><br>  + Provision AWS Secrets Manager secrets to securely store External AI API tokens.<br>  + Implement dynamic secret retrieval inside the AWS Lambda (AI Processor) using AWS SDK with local caching.</td>
           <td>16/06/2026</td>
           <td>16/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Setup API Gateway Usage Plans &amp; API Keys</td>
+          <td><strong>Topic: Amazon API Gateway Usage Plans, API Keys &amp; Tiered Access Control</strong><br>- <strong>Knowledge:</strong><br>  + API Gateway Usage Plans, API Keys, and client request throttling mechanics.<br>  + Mapping service tier quotas (Free, Plus, Pro) to usage plans for Wakan itinerary generation.<br>  + Request validation templates to reject malformed payloads before reaching Lambda.<br>- <strong>Practice:</strong><br>  + Create API Gateway Usage Plans and API Keys corresponding to Wakan subscription tiers.<br>  + Associate API Keys with Cognito authenticated sessions and configure JSON Schema request validators.</td>
           <td>17/06/2026</td>
           <td>17/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Configure Rate Limiting and Throttling rules</td>
+          <td><strong>Topic: API Rate Limiting, Throttling Rules &amp; DDoS Prevention</strong><br>- <strong>Knowledge:</strong><br>  + Token Bucket algorithm used by Amazon API Gateway for request throttling.<br>  + Rate limits (steady-state requests per second) vs Burst limits (maximum capacity bucket).<br>  + Handling HTTP 429 (Too Many Requests) errors gracefully on client applications.<br>- <strong>Practice:</strong><br>  + Configure Rate Limiting (50 req/sec) and Burst Limits (100 req/sec) on API Gateway stages.<br>  + Test API throttling resilience using simulated load tools and verify HTTP 429 response handling.</td>
           <td>18/06/2026</td>
           <td>18/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Comprehensive security policy audit &amp; Architecture Review</td>
+          <td><strong>Topic: Comprehensive Security Policy Audit &amp; Cloud Architecture Review</strong><br>- <strong>Knowledge:</strong><br>  + Cloud security auditing procedures, IAM privilege analysis, and network security review.<br>  + S3 Public Access Block verification, CloudWatch audit logging, and VPC endpoint security.<br>- <strong>Practice:</strong><br>  + Execute an end-to-end security policy audit across all Wakan cloud resources (IAM, WAF, API Gateway, S3, Secrets Manager).<br>  + Generate an internal security audit report and resolve minor permission over-grant issues.</td>
           <td>19/06/2026</td>
           <td>19/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-9-achievements">Week 9 Achievements:</h3>
+<h4 id="monday-15062026">Monday (15/06/2026):</h4>
 <ul>
-<li><strong>Credential Management:</strong> Safely isolated and encrypted External AI API keys using AWS Secrets Manager.</li>
-<li><strong>API Protection:</strong> Prevented abuse and spam by successfully configuring Usage Plans and Throttling on API Gateway.</li>
+<li>Conducted a thorough peer code review across Backend and AI integration sub-teams, ensuring compliance with OWASP secure coding guidelines.</li>
+<li>Refactored Lambda functions to eliminate hardcoded configuration values and prevented internal system stack trace leakage in API responses.</li>
+<li>Standardized JSON exception responses for seamless error handling on the Wakan frontend interface.</li>
+</ul>
+<h4 id="tuesday-16062026">Tuesday (16/06/2026):</h4>
+<ul>
+<li>Encrypted and safely isolated External AI API tokens inside AWS Secrets Manager using KMS keys.</li>
+<li>Integrated dynamic secret retrieval in AWS Lambda (AI Processor) via AWS SDK, leveraging global variable caching to minimize API call latency and costs.</li>
+<li>Attached resource-based permission policies ensuring only designated Lambda execution roles can decrypt and read the AI tokens.</li>
+</ul>
+<h4 id="wednesday-17062026">Wednesday (17/06/2026):</h4>
+<ul>
+<li>Built Amazon API Gateway Usage Plans and API Keys to enforce usage quotas aligned with Wakan subscription tiers (Free, Plus, Pro).</li>
+<li>Implemented request validation models on API Gateway to drop invalid HTTP payloads at the edge before invoking downstream compute.</li>
+<li>Linked Cognito identity authentication tokens with API Gateway key validation workflows.</li>
+</ul>
+<h4 id="thursday-18062026">Thursday (18/06/2026):</h4>
+<ul>
+<li>Configured Rate Limiting (steady-state) and Burst Throttling rules on Amazon API Gateway stages to prevent API abuse and DDoS floods.</li>
+<li>Protected downstream Lambda functions and external AI APIs from unexpected traffic spikes and cost overruns.</li>
+<li>Validated throttling behavior using automated request bursts, verifying correct HTTP 429 (Too Many Requests) error responses.</li>
+</ul>
+<h4 id="friday-19062026">Friday (19/06/2026):</h4>
+<ul>
+<li>Completed a comprehensive internal cybersecurity audit across all Wakan infrastructure assets.</li>
+<li>Verified that all S3 buckets enforce Block Public Access, CloudFront uses OAC, and IAM roles strictly adhere to Least-Privilege boundaries.</li>
+<li>Documented the final security audit review and secured architecture approval for production readiness.</li>
 </ul>
 
 
@@ -2173,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784554210"></script>
+    <script src="/js/jquery.sticky.js?1784554210"></script>
+    <script src="/js/featherlight.min.js?1784554210"></script>
+    <script src="/js/highlight.pack.js?1784554210"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784554210"></script>
+    <script src="/js/learn.js?1784554210"></script>
+    <script src="/js/hugo-learn.js?1784554210"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784554210" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784554210"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

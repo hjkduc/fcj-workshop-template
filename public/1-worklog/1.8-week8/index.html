@@ -15,21 +15,21 @@
     <title>Week 8 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784554210" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784554210" rel="stylesheet">
+    <link href="/css/hybrid.css?1784554210" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784554210" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784554210" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784554210" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784554210" rel="stylesheet">
+    <link href="/css/theme.css?1784554210" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784554210" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784554210" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784554210"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784554210"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784554210"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784554210"></script>
  
   </div>
 
@@ -1184,7 +1184,7 @@
     <li>
       <ul>
         <li><a href="#week-8-objectives">Week 8 Objectives:</a></li>
-        <li><a href="#tasks-completed-this-week">Tasks completed this week:</a></li>
+        <li><a href="#tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</a></li>
         <li><a href="#week-8-achievements">Week 8 Achievements:</a></li>
       </ul>
     </li>
@@ -1214,10 +1214,11 @@
 
 	<h3 id="week-8-objectives">Week 8 Objectives:</h3>
 <ul>
-<li>Deploy the foundational infrastructure to host the frontend and secure incoming traffic.</li>
-<li>Configure identity management and enforce strict security boundaries for serverless compute.</li>
+<li>Establish unified API contract schemas between Frontend, Backend, and AI processing sub-teams.</li>
+<li>Deploy foundational web hosting for Wakan UI Assets using Amazon S3 and Amazon CloudFront secured by Origin Access Control (OAC).</li>
+<li>Enforce edge protection using AWS WAF and configure identity management via Amazon Cognito User Pools and least-privilege IAM roles.</li>
 </ul>
-<h3 id="tasks-completed-this-week">Tasks completed this week:</h3>
+<h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
   <thead>
       <tr>
@@ -1225,51 +1226,78 @@
           <th>Task</th>
           <th>Start Date</th>
           <th>Completion Date</th>
-          <th>Status</th>
+          <th>Reference Material</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Sync API contracts (Frontend-Backend-AI)</td>
+          <td><strong>Topic: API Contract Synchronization &amp; Schema Specification (Frontend-Backend-AI)</strong><br>- <strong>Knowledge:</strong><br>  + RESTful API standards, OpenAPI (Swagger) 3.0 specification, JSON Schema validation.<br>  + Decoupled architecture contracts for asynchronous itinerary generation payloads.<br>- <strong>Practice:</strong><br>  + Draft OpenAPI spec for Wakan REST API endpoints (<code>/itinerary</code>, <code>/preferences</code>, <code>/user/profile</code>).<br>  + Align request/response parameters and error codes across Frontend, Backend, and AI sub-teams.</td>
           <td>08/06/2026</td>
           <td>08/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Deploy Amazon S3 for frontend hosting &amp; CloudFront</td>
+          <td><strong>Topic: Frontend Hosting via Amazon S3 &amp; CDN Acceleration with Amazon CloudFront</strong><br>- <strong>Knowledge:</strong><br>  + Amazon S3 static asset storage and bucket isolation strategies.<br>  + Amazon CloudFront Distribution, Edge Caching, Custom SSL/TLS certificates via AWS Certificate Manager (ACM).<br>  + Origin Access Control (OAC): Restricting public S3 bucket access to CloudFront requests only.<br>- <strong>Practice:</strong><br>  + Provision a private S3 bucket for Wakan web frontend assets.<br>  + Deploy a CloudFront distribution with OAC integration, blocking direct public internet access to the S3 bucket.</td>
           <td>09/06/2026</td>
           <td>09/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Implement AWS WAF to protect CloudFront distributions</td>
+          <td><strong>Topic: Edge Security Perimeter with AWS WAF &amp; Threat Mitigation</strong><br>- <strong>Knowledge:</strong><br>  + AWS WAF (Web Application Firewall): Web ACLs, Custom Rules vs AWS Managed Rule Groups (<code>AWSManagedRulesCommonRuleSet</code>, SQLi, Known Bad Inputs).<br>  + Rate-based rules for HTTP flood / DDoS attack mitigation at the edge.<br>- <strong>Practice:</strong><br>  + Provision an AWS WAF Web ACL attached to the Wakan CloudFront distribution.<br>  + Configure rate-limiting rules (100 requests / 5 min per IP) and enable WAF sampled request logging.</td>
           <td>10/06/2026</td>
           <td>10/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Setup Amazon Cognito User Pool for authentication</td>
+          <td><strong>Topic: User Identity Management &amp; Authentication with Amazon Cognito</strong><br>- <strong>Knowledge:</strong><br>  + Amazon Cognito User Pools vs Identity Pools, OAuth 2.0 / OIDC flows.<br>  + JWT Token Lifecycle: ID Tokens, Access Tokens, Refresh Tokens.<br>  + User Pool Client configurations, MFA enforcement, and custom user attributes.<br>- <strong>Practice:</strong><br>  + Provision an Amazon Cognito User Pool for Wakan with email sign-in verification.<br>  + Configure custom user attributes (preferred travel styles, budget tier) and enable Hosted UI integration.</td>
           <td>11/06/2026</td>
           <td>11/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Configure least-privilege IAM roles for AWS Lambdas</td>
+          <td><strong>Topic: Least-Privilege IAM Execution Roles &amp; Security Guardrails for AWS Lambda</strong><br>- <strong>Knowledge:</strong><br>  + Granular IAM execution roles for AWS Lambda workers.<br>  + Policy condition keys (<code>aws:PrincipalOrgID</code>, <code>s3:ResourceAccount</code>, <code>dynamodb:LeadingKeys</code>).<br>  + Least-Privilege access enforcement and resource-based policies.<br>- <strong>Practice:</strong><br>  + Author strict JSON IAM execution policies for Wakan Lambda functions, restricting DynamoDB access to specific table ARNs and Secrets Manager to specific secret keys.<br>  + Validate IAM permissions using IAM Policy Simulator.</td>
           <td>12/06/2026</td>
           <td>12/06/2026</td>
-          <td>Completed</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-8-achievements">Week 8 Achievements:</h3>
+<h4 id="monday-08062026">Monday (08/06/2026):</h4>
 <ul>
-<li><strong>Edge &amp; Hosting:</strong> Successfully hosted the static frontend on S3, accelerated by CloudFront, and secured by AWS WAF.</li>
-<li><strong>Identity &amp; Access:</strong> Deployed Cognito for seamless user login and enforced the principle of least privilege across all Lambda execution roles.</li>
+<li>Synchronized RESTful API contract specifications across Frontend, Backend, and AI sub-teams using OpenAPI 3.0 standards.</li>
+<li>Defined data schemas for user travel preference inputs and AI-generated itinerary outputs.</li>
+<li>Established standardized JSON error code structures for client-side exception handling.</li>
+</ul>
+<h4 id="tuesday-09062026">Tuesday (09/06/2026):</h4>
+<ul>
+<li>Deployed a private Amazon S3 bucket for hosting Wakan static web frontend assets (UI Assets).</li>
+<li>Configured Amazon CloudFront CDN distribution to accelerate global web asset delivery with low latency.</li>
+<li>Restricted S3 origin access using CloudFront Origin Access Control (OAC), completely removing public bucket access.</li>
+</ul>
+<h4 id="wednesday-10062026">Wednesday (10/06/2026):</h4>
+<ul>
+<li>Built a robust edge security perimeter by deploying an AWS WAF Web ACL on top of CloudFront.</li>
+<li>Configured AWS Managed Rule Groups to block common web vulnerabilities (OWASP Top 10, SQLi, Cross-Site Scripting).</li>
+<li>Implemented rate-based rules to protect backend services against automated bot traffic and HTTP DDoS floods.</li>
+</ul>
+<h4 id="thursday-11062026">Thursday (11/06/2026):</h4>
+<ul>
+<li>Deployed Amazon Cognito User Pools to manage registration, login, and authentication workflows for Wakan users.</li>
+<li>Enabled email verification, strong password policies, and Multi-Factor Authentication (MFA) capabilities.</li>
+<li>Configured custom user profile attributes to store user travel preferences directly within Cognito tokens.</li>
+</ul>
+<h4 id="friday-12062026">Friday (12/06/2026):</h4>
+<ul>
+<li>Authored granular IAM Execution Roles for all backend Lambda functions adhering strictly to the Principle of Least Privilege.</li>
+<li>Restricted Lambda database access specifically to Wakan DynamoDB table ARNs and secret access strictly to designated Secrets Manager keys.</li>
+<li>Tested and validated IAM execution boundaries using IAM Policy Simulator to prevent unintended privilege escalation.</li>
 </ul>
 
 
@@ -2172,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784554210"></script>
+    <script src="/js/jquery.sticky.js?1784554210"></script>
+    <script src="/js/featherlight.min.js?1784554210"></script>
+    <script src="/js/highlight.pack.js?1784554210"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784554210"></script>
+    <script src="/js/learn.js?1784554210"></script>
+    <script src="/js/hugo-learn.js?1784554210"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784554210" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784554210"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -15,21 +15,21 @@
     <title>Week 5 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784554210" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784554210" rel="stylesheet">
+    <link href="/css/hybrid.css?1784554210" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784554210" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784554210" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784554210" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784554210" rel="stylesheet">
+    <link href="/css/theme.css?1784554210" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784554210" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784554210" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784554210"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784554210"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784554210"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784554210"></script>
  
   </div>
 
@@ -1214,9 +1214,9 @@
 
 	<h3 id="week-5-objectives">Week 5 Objectives:</h3>
 <ul>
-<li>Study modern architecture methodologies (Monolith to Microservices).</li>
-<li>Learn to build full-stack serverless applications via the Book Store Series.</li>
-<li>Integrate GraphQL APIs and Event-driven architectures.</li>
+<li>Study modern cloud architecture methodologies, decomposing legacy monolithic applications into agile, event-driven microservices.</li>
+<li>Build a full-stack serverless application (Serverless Book Store) combining AWS Lambda, Amazon DynamoDB, Amazon S3, and API Gateway.</li>
+<li>Master asynchronous event-driven messaging (SNS, SQS, EventBridge) and flexible GraphQL API integration with AWS AppSync.</li>
 </ul>
 <h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
@@ -1232,46 +1232,72 @@
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Migration to Microservices <br> - Event-Driven Architecture fundamentals</td>
+          <td><strong>Topic: Migration to Microservices &amp; Event-Driven Architecture Fundamentals</strong><br>- <strong>Knowledge:</strong><br>  + Monolith vs Microservices: Benefits, challenges, Domain-Driven Design (DDD), and Strangler Fig pattern.<br>  + Event-Driven Architecture (EDA): Event Producers, Event Routers (Amazon EventBridge), Event Consumers, and Schema Registry.<br>- <strong>Practice:</strong><br>  + Design a microservices decomposition roadmap for a legacy monolithic app using the Strangler Fig pattern and EventBridge rules.</td>
           <td>18/05/2026</td>
           <td>18/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- SPA Authentication <br> - Integrating AWS AI services</td>
+          <td><strong>Topic: SPA Authentication &amp; Integrating AWS AI Services</strong><br>- <strong>Knowledge:</strong><br>  + Single Page Application (SPA) Security: OAuth 2.0 / OIDC authentication flows, JWT handling, and CORS policies.<br>  + Pre-built AWS AI Services: Amazon Rekognition (Vision), Polly (Text-to-Speech), Translate, and Transcribe.<br>- <strong>Practice:</strong><br>  + Build a web frontend prototype calling AWS AI services (Polly &amp; Translate) via secure API endpoints.</td>
           <td>19/05/2026</td>
           <td>19/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Serverless Book Store: Backend with Lambda, S3, DynamoDB</td>
+          <td><strong>Topic: Serverless Book Store: Backend with Lambda, S3 &amp; DynamoDB</strong><br>- <strong>Knowledge:</strong><br>  + Serverless Application Patterns: RESTful API design using Amazon API Gateway.<br>  + DynamoDB Single-Table Design: Access patterns, primary keys, and Secondary Indexes for efficient querying.<br>  + S3 Asset Storage: Hosting web assets and managing CORS rules.<br>- <strong>Practice:</strong><br>  + Develop core RESTful CRUD endpoints for the Serverless Book Store using API Gateway, Lambda, and DynamoDB.</td>
           <td>20/05/2026</td>
           <td>20/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Frontend integration &amp; AWS SAM deployment <br> - Cognito user authentication</td>
+          <td><strong>Topic: Frontend Integration, AWS SAM Deployment &amp; Cognito User Authentication</strong><br>- <strong>Knowledge:</strong><br>  + Infrastructure as Code for Serverless: AWS Serverless Application Model (SAM) templates, CLI workflow (<code>sam build</code>, <code>sam deploy</code>).<br>  + User Authentication: Amazon Cognito User Pools, Hosted UI, and API Gateway Cognito Authorizers.<br>- <strong>Practice:</strong><br>  + Deploy the full-stack Book Store application using AWS SAM CLI.<br>  + Integrate Amazon Cognito User Pools to secure backend API routes with JWT token verification.</td>
           <td>21/05/2026</td>
           <td>21/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Async event handling (SQS/SNS) <br> - GraphQL APIs with AWS AppSync</td>
+          <td><strong>Topic: Asynchronous Event Handling (SQS/SNS) &amp; GraphQL APIs with AWS AppSync</strong><br>- <strong>Knowledge:</strong><br>  + Messaging Decoupling: Amazon SNS (Pub/Sub) vs Amazon SQS (Queuing, Dead Letter Queues - DLQs), Fan-out pattern.<br>  + GraphQL APIs: REST vs GraphQL comparison, AWS AppSync schemas, Data Sources, and Resolvers.<br>- <strong>Practice:</strong><br>  + Implement an asynchronous order processing pipeline using SNS fan-out to SQS queues.<br>  + Build an AWS AppSync GraphQL API querying DynamoDB tables with JavaScript resolvers.</td>
           <td>22/05/2026</td>
           <td>22/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-5-achievements">Week 5 Achievements:</h3>
+<h4 id="monday-18052026">Monday (18/05/2026):</h4>
 <ul>
-<li><strong>DevAx Mindset:</strong> Solidified the theoretical framework for breaking down monolithic legacy apps into agile, event-driven microservices.</li>
-<li><strong>Full-Stack Serverless Learning:</strong> Completed theoretical and practical studies on combining Lambda, DynamoDB, and API Gateway without provisioning servers.</li>
-<li><strong>Advanced API Integration:</strong> Gained technical insight into optimizing client-server data fetching using AWS AppSync (GraphQL) and decoupling systems via SQS/SNS.</li>
+<li>Mastered architectural strategies for migrating monolithic applications to microservices using Domain-Driven Design and the Strangler Fig pattern.</li>
+<li>Understood core Event-Driven Architecture (EDA) principles and event routing capabilities with Amazon EventBridge.</li>
+<li>Designed an event-driven integration blueprint to decouple legacy components progressively.</li>
+</ul>
+<h4 id="tuesday-19052026">Tuesday (19/05/2026):</h4>
+<ul>
+<li>Understood secure authentication patterns for Single Page Applications (SPAs) using OAuth 2.0 and JWTs.</li>
+<li>Explored managed AWS AI Services (Polly, Translate, Rekognition) for rapid feature integration without ML expertise.</li>
+<li>Developed a web interface that seamlessly translates text and generates audio streams via AWS AI APIs.</li>
+</ul>
+<h4 id="wednesday-20052026">Wednesday (20/05/2026):</h4>
+<ul>
+<li>Applied DynamoDB Single-Table Design principles to optimize data access patterns for the Serverless Book Store.</li>
+<li>Created RESTful API routes in Amazon API Gateway backed by AWS Lambda business logic.</li>
+<li>Configured Amazon S3 for secure static web asset hosting and CORS compliance.</li>
+</ul>
+<h4 id="thursday-21052026">Thursday (21/05/2026):</h4>
+<ul>
+<li>Automated full-stack serverless deployments using the AWS Serverless Application Model (SAM) CLI.</li>
+<li>Secured backend API Gateway endpoints using Amazon Cognito User Pool Authorizers.</li>
+<li>Connected the frontend user interface to Cognito authentication workflows for user registration and sign-in.</li>
+</ul>
+<h4 id="friday-22052026">Friday (22/05/2026):</h4>
+<ul>
+<li>Built a resilient, decoupled messaging pipeline using the Amazon SNS fan-out pattern to Amazon SQS queues with Dead Letter Queue (DLQ) error handling.</li>
+<li>Learned the fundamentals of GraphQL vs REST APIs and deployed an AWS AppSync API.</li>
+<li>Configured AppSync data sources and resolvers to query DynamoDB tables flexibly with minimal network payload.</li>
 </ul>
 
 
@@ -2174,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784554210"></script>
+    <script src="/js/jquery.sticky.js?1784554210"></script>
+    <script src="/js/featherlight.min.js?1784554210"></script>
+    <script src="/js/highlight.pack.js?1784554210"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784554210"></script>
+    <script src="/js/learn.js?1784554210"></script>
+    <script src="/js/hugo-learn.js?1784554210"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784554210" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784554210"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -15,21 +15,21 @@
     <title>Week 4 Worklog :: Internship Report</title>
 
     
-    <link href="/css/nucleus.css?1784463862" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1784463862" rel="stylesheet">
-    <link href="/css/hybrid.css?1784463862" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1784463862" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1784463862" rel="stylesheet">
-    <link href="/css/auto-complete.css?1784463862" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1784463862" rel="stylesheet">
-    <link href="/css/theme.css?1784463862" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1784463862" rel="stylesheet">
+    <link href="/css/nucleus.css?1784554210" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1784554210" rel="stylesheet">
+    <link href="/css/hybrid.css?1784554210" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1784554210" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1784554210" rel="stylesheet">
+    <link href="/css/auto-complete.css?1784554210" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1784554210" rel="stylesheet">
+    <link href="/css/theme.css?1784554210" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1784554210" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1784463862" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1784554210" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1784463862"></script>
+    <script src="/js/jquery-3.3.1.min.js?1784554210"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -59,14 +59,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1784463862"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1784463862"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1784554210"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1784554210"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1784463862"></script>
+<script type="text/javascript" src="/js/search.js?1784554210"></script>
  
   </div>
 
@@ -1214,9 +1214,9 @@
 
 	<h3 id="week-4-objectives">Week 4 Objectives:</h3>
 <ul>
-<li>Master container orchestration using Amazon ECS and serverless Fargate.</li>
-<li>Learn Kubernetes fundamentals via Amazon EKS and enterprise Red Hat OpenShift.</li>
-<li>Implement CI/CD pipelines following DevOps culture.</li>
+<li>Master containerization with Docker and container orchestration using Amazon ECS and serverless AWS Fargate.</li>
+<li>Learn Kubernetes fundamentals via Amazon EKS, automated cluster bootstrapping with EKS Blueprints, and enterprise Red Hat OpenShift Service on AWS (ROSA).</li>
+<li>Implement automated CI/CD pipelines following DevOps best practices and orchestrate complex serverless microservices with AWS Step Functions.</li>
 </ul>
 <h3 id="tasks-to-be-carried-out-this-week">Tasks to be carried out this week:</h3>
 <table>
@@ -1232,46 +1232,72 @@
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Containerization with Docker <br> - Orchestration with Amazon ECS &amp; AWS Fargate</td>
+          <td><strong>Topic: Containerization with Docker &amp; Orchestration with Amazon ECS &amp; AWS Fargate</strong><br>- <strong>Knowledge:</strong><br>  + Docker Fundamentals: Images, Containers, Dockerfile best practices, and Amazon Elastic Container Registry (ECR).<br>  + Amazon ECS Core Concepts: Clusters, Task Definitions, Tasks, and Services.<br>  + Compute Launch Types: EC2 Launch Type vs Serverless AWS Fargate engine.<br>- <strong>Practice:</strong><br>  + Containerize a web application, push the Docker image to Amazon ECR.<br>  + Provision an Amazon ECS cluster and deploy the application using the serverless AWS Fargate launch type.</td>
           <td>11/05/2026</td>
           <td>11/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- CI/CD Pipeline for ECS with AWS CodePipeline <br> - IaC for ECS using CDK</td>
+          <td><strong>Topic: CI/CD Pipeline for ECS with AWS CodePipeline &amp; IaC for ECS using CDK</strong><br>- <strong>Knowledge:</strong><br>  + AWS Developer Tools: AWS CodeCommit, CodeBuild, CodeDeploy, and CodePipeline.<br>  + Automated Container Delivery: Rolling updates, Blue/Green deployments for ECS.<br>  + High-Level CDK Constructs: <code>ApplicationLoadBalancedFargateService</code>.<br>- <strong>Practice:</strong><br>  + Construct an automated CI/CD pipeline using AWS CodePipeline to build and deploy container updates to ECS on code commit.<br>  + Write a CDK script to programmatically deploy an ECS Fargate service behind an ALB.</td>
           <td>12/05/2026</td>
           <td>12/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Getting started with Amazon EKS (Kubernetes) <br> - EKS Blueprints for CDK</td>
+          <td><strong>Topic: Getting Started with Amazon EKS (Kubernetes) &amp; EKS Blueprints for CDK</strong><br>- <strong>Knowledge:</strong><br>  + Kubernetes Architecture: Control Plane, Worker Nodes, Pods, Deployments, Services, and Ingress.<br>  + Amazon EKS Managed Kubernetes: Managed Node Groups, Fargate profiles, and <code>kubectl</code> CLI integration.<br>  + EKS Blueprints for CDK: Framework for bootstrapping production-ready EKS clusters.<br>- <strong>Practice:</strong><br>  + Provision an Amazon EKS cluster using EKS Blueprints for CDK.<br>  + Deploy a sample multi-pod workload and expose it via a LoadBalancer Service using <code>kubectl</code>.</td>
           <td>13/05/2026</td>
           <td>13/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- CI/CD for EKS applications <br> - Red Hat OpenShift Service on AWS (ROSA)</td>
+          <td><strong>Topic: CI/CD for EKS Applications &amp; Red Hat OpenShift Service on AWS (ROSA)</strong><br>- <strong>Knowledge:</strong><br>  + Kubernetes Deployment Strategies: GitOps principles (ArgoCD/Flux) vs AWS CodePipeline for EKS.<br>  + Red Hat OpenShift Service on AWS (ROSA): Managed enterprise OpenShift architecture, hybrid cloud integration, and security compliance.<br>- <strong>Practice:</strong><br>  + Configure a continuous deployment pipeline for Kubernetes manifests targeting an EKS cluster.<br>  + Analyze ROSA cluster deployment topologies and enterprise migration scenarios.</td>
           <td>14/05/2026</td>
           <td>14/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- Hybrid Storage Gateway &amp; Amazon FSx <br> - Advanced workflows with Step Functions</td>
+          <td><strong>Topic: Hybrid Storage Gateway, Amazon FSx &amp; Advanced Workflows with Step Functions</strong><br>- <strong>Knowledge:</strong><br>  + AWS Storage Gateway: Volume Gateway, Tape Gateway, and S3 File Gateway for hybrid cloud storage.<br>  + Amazon FSx Family: FSx for Windows File Server, Lustre, NetApp ONTAP, and OpenZFS.<br>  + AWS Step Functions: State Machines, visual workflows, error handling, retries, and parallel execution.<br>- <strong>Practice:</strong><br>  + Build an event-driven AWS Step Functions State Machine to orchestrate asynchronous microservices.<br>  + Evaluate Amazon FSx storage options for high-performance enterprise workloads.</td>
           <td>15/05/2026</td>
           <td>15/05/2026</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
   </tbody>
 </table>
+<hr>
 <h3 id="week-4-achievements">Week 4 Achievements:</h3>
+<h4 id="monday-11052026">Monday (11/05/2026):</h4>
 <ul>
-<li><strong>Container Mastery:</strong> Learned to deploy containers seamlessly across ECS and the serverless Fargate engine, removing host management burdens.</li>
-<li><strong>Kubernetes &amp; Enterprise OS:</strong> Grasped complex K8s architectures using Amazon EKS and explored enterprise-grade containerization with ROSA.</li>
-<li><strong>DevOps Integration:</strong> Successfully designed and implemented automated CI/CD pipelines bridging source code directly to containerized deployments.</li>
+<li>Mastered containerization workflows using Docker, writing optimized Dockerfiles, and managing repositories in Amazon ECR.</li>
+<li>Understood container orchestration abstractions in Amazon ECS (Clusters, Task Definitions, Services).</li>
+<li>Eliminated server provisioning and OS management overhead by deploying containerized workloads onto serverless AWS Fargate.</li>
+</ul>
+<h4 id="tuesday-12052026">Tuesday (12/05/2026):</h4>
+<ul>
+<li>Built a fully automated CI/CD pipeline using AWS CodePipeline to build Docker images and execute zero-downtime rolling updates on ECS.</li>
+<li>Programmatically provisioned load-balanced ECS Fargate infrastructure using high-level AWS CDK constructs.</li>
+<li>Understood Blue/Green deployment strategies using AWS CodeDeploy for mission-critical containerized applications.</li>
+</ul>
+<h4 id="wednesday-13052026">Wednesday (13/05/2026):</h4>
+<ul>
+<li>Acquired a solid understanding of Kubernetes core concepts (Control Plane, Nodes, Pods, Deployments, Services).</li>
+<li>Bootstrapped an Amazon EKS cluster effortlessly using EKS Blueprints for CDK.</li>
+<li>Interacted with EKS clusters using <code>kubectl</code> to deploy, manage, and expose containerized applications.</li>
+</ul>
+<h4 id="thursday-14052026">Thursday (14/05/2026):</h4>
+<ul>
+<li>Explored automated deployment techniques for Kubernetes, comparing GitOps workflows with native CI/CD pipelines.</li>
+<li>Understood enterprise containerization advantages with Red Hat OpenShift Service on AWS (ROSA).</li>
+<li>Analyzed hybrid application deployment patterns for large-scale enterprise migrations.</li>
+</ul>
+<h4 id="friday-15052026">Friday (15/05/2026):</h4>
+<ul>
+<li>Evaluated hybrid storage integration strategies using AWS Storage Gateway and the Amazon FSx suite.</li>
+<li>Mastered serverless workflow orchestration using AWS Step Functions State Machines.</li>
+<li>Designed resilient visual workflows with built-in error handling, branching logic, and parallel state execution.</li>
 </ul>
 
 
@@ -2174,19 +2200,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.min.js?1784463862"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1784463862"></script>
-    <script src="/js/jquery.sticky.js?1784463862"></script>
-    <script src="/js/featherlight.min.js?1784463862"></script>
-    <script src="/js/highlight.pack.js?1784463862"></script>
+    <script src="/js/clipboard.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.min.js?1784554210"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1784554210"></script>
+    <script src="/js/jquery.sticky.js?1784554210"></script>
+    <script src="/js/featherlight.min.js?1784554210"></script>
+    <script src="/js/highlight.pack.js?1784554210"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1784463862"></script>
-    <script src="/js/learn.js?1784463862"></script>
-    <script src="/js/hugo-learn.js?1784463862"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1784554210"></script>
+    <script src="/js/learn.js?1784554210"></script>
+    <script src="/js/hugo-learn.js?1784554210"></script>
 
-    <link href="/mermaid/mermaid.css?1784463862" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1784463862"></script>
+    <link href="/mermaid/mermaid.css?1784554210" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1784554210"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
